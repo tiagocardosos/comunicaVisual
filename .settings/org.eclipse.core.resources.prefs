@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/entys/Pessoa.java=UTF-8
+encoding//src/entys/PessoaFisica.java=UTF-8
+encoding//src/entys/PessoaJuridica.java=UTF-8
 encoding//src/manageBeans/MBeanPessoa.java=UTF-8
 encoding//src/testeUnitario/TesteConexaoPostgre.java=UTF-8
 encoding//src/util/JPAUtil.java=UTF-8
