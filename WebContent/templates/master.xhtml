@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<!-- 
+@autor: André Martins
+@contact: andremartins@outlook.com.br
+@cel: 63 8412 1921
+ -->
+<h:head>
+  <title><ui:insert name="title">Drem sistema integrado</ui:insert></title>
+</h:head>
+<body>
+    <p:layout fullPage="true" >
+
+		<!-- este é o topo padrão do sistema que é constituido na página topo.xhtml -->
+        <p:layoutUnit id="top" position="north" size="50">
+        	<h:form id="topo">
+				<ui:include src="topo.xhtml"></ui:include> 
+	        </h:form>
+        </p:layoutUnit>
+        <!-- fim topo -->
+        
+		<!-- content -->
+        <p:layoutUnit id="center" position="center">
+			<h:form id="content">
+			 <ui:insert name="conteudo"/>
+	        </h:form>
+        </p:layoutUnit>
+        <!-- fim content -->
+        
+		<!-- footer -->
+        <p:layoutUnit collapsed="true" id="bottom" position="south" size="90" resizable="true" closable="true" collapsible="true"
+        header="rodapé"  effect="drop">       	
+        	<ui:include src="rodape.xhtml"></ui:include>       	
+        </p:layoutUnit>
+        <!-- fim footer -->          
+        
+    </p:layout>
+
+</body>
+</html>

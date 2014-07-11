@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+.ui-layout-north {z-index:20 !important;overflow:visible !important; }
+.ui-layout-north .ui-layout-unit-content {overflow:visible !important; }
+a:link, a:visited {text-decoration: none }
+a:hover {text-decoration: underline; color: #f00;}
+a:active {text-decoration: none }
+.ui-widget,.ui-widget .ui-widget {font-size: 14px !important;}
+
+/* input[type=text]{border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow: 1px 1px 2px #333333;
+-moz-box-shadow: 1px 1px 2px #333333;-webkit-box-shadow: 1px 1px 2px #333333;background: #ECECFB; 
+border:1px solid #000000;width:200px; height: 25px; padding: 3px; font-size: 12pt; padding: 5px;} 
+
+input[type=text]:hover, textarea:hover{background: #ffffff; border:1px solid #990000;}
+
+input[type=submit]{background:#006699;color:#ffffff;}
+
+textarea{border: 1px solid #000000; background:#ECECFB; width:200px; height:100px; border-radius:4px;-moz-border-radius:4px;
+-webkit-border-radius:4px; box-shadow: 1px 1px 2px #333333; -moz-box-shadow: 1px 1px 2px #333333;
+-webkit-box-shadow: 1px 1px 2px #333333;padding: 5px; }
+
+#menu {background-color:#EEE9E9;	background-repeat:repeat-x;color:white;	min-height: 25px;padding: 3px;clear: both; }
+
+.ui-widget {font-size: 14px !important;}
+
+#container {width: 770px; height: 100%; margin: 0 auto; }
+
+#topo{background-color:#EEE9E9;margin: 0 auto;height:110px;}
+
+#topoInt{background-color:#EEE9E9;margin: 0 auto;height:110px;text-align:center; padding: 10px auto;width:1000px;
+padding: 50px; margin: 0px auto;}
+
+#banner {float: left;font-size: 25pt;font-variant: small-caps;font-weight: bold;}
+
+
+
+#content {background-color:white;background-image:url("./imagens/content.fw.png"); min-height: 350px; background-repeat:repeat-x; padding-bottom: 20px;}
+
+#contentInt {background-color:white;background-image:url("./imagens/content.fw.png");background-repeat: x; width:1000px;padding: 5px; margin: 0 auto;}
+
+#rodape{background-color:#696969;margin: 0 auto;height:30px; position: absolute; bottom: 0;width: 100%;}
+
+#rodapeInt{width:1000px;background-color:#696969;margin: 0 auto;min-height:30px; width: 1000px;}
+
+#resultado {background-color:#BDBFC1;background: radial-gradient(#888888, #333333);width:450px;height: 500px;text-align:left; border-radius: 7px;
+			font-family:serif;font-size:18px; font-style:oblique; float: right;
+			margin-top: 20px; margin-right:40px;}
+
+#form {background-color:#EEE9E9; width:93%;height: 450px;padding: 30px;text-align: center;font-size: 16px;font-style:normal;
+text-align: center;font-weight:normal;float: left; margin-top: 10px; border-radius: 7px; margin-left: 40px;}
+
+ */

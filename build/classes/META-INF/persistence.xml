@@ -2,32 +2,58 @@
 <persistence version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="comunicaVisual" transaction-type="RESOURCE_LOCAL">
-	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-	  
-		<class>entys.Pessoa</class>
-		<class>entys.Cidade</class>
-		<class>entys.Estado</class>
-		<class>entys.Pais</class>
-		<class>entys.PessoaFisica</class>
-		<class>entys.PessoaJuridica</class>
-
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	<persistence-unit name="comunicaVisual"
+		transaction-type="RESOURCE_LOCAL">
+		<!-- meu provider é o hibernate -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- mapeamento das entidades criadas -->
+		<class>br.com.drem.entity.Pessoa</class>
+		<class>br.com.drem.entity.Cidade</class>
+		<class>br.com.drem.entity.Estado</class>
+		<class>br.com.drem.entity.Pais</class>
+		<class>br.com.drem.entity.PessoaFisica</class>
+		<class>br.com.drem.entity.PessoaJuridica</class>
+		<class>br.com.drem.entity.Usuario</class>
+		<class>br.com.drem.entity.Funcionario</class>
+		<class>br.com.drem.entity.Venda</class>
+		<class>br.com.drem.entity.Produto</class>
+		
+		<!-- se determinada entidade não estiver participando da query ela vai ser excluida do trabalho -->
+		<exclude-unlisted-classes>true</exclude-unlisted-classes> 
 
 		<properties>
+			<!-- postgres é o nome da minha database -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres" />
+			
+			<!-- drive do postgresql 9 -->
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			
+			<!-- ususário da base de dados -->
 			<property name="javax.persistence.jdbc.user" value="postgres" />
+			
+			<!-- Senha -->
 			<property name="javax.persistence.jdbc.password" value="1" />
 			
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<!-- nome do schema-->
+			<property name="hibernate.default_schema" value="dremcom_drem" />
+			
+			<!-- metodo para criacao, atualizacao ou exclusao de tables -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<!-- para visualizarmos as querys no console -->
 			<property name="hibernate.show_sql" value="true" />
+			
+			<!-- para formatamos as querys -->
 			<property name="hibernate.format_sql" value="true" />
+			
+			<!-- dialeto do banco de dados -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-
+			
+			<!--  -->
 			<property name="hibernate.cache.use_query_cache" value="true" />
 			<property name="hibernate.cache.region.factory_class"
 				value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+
 		</properties>
 	</persistence-unit>
 

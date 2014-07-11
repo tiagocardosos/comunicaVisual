@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!-- 
+@autor: André Martins
+@contact: andremartins@outlook.com.br
+@cel: 63 8412 1921
+ -->
+<h:head>
+	<title><ui:insert name="title">Pagina não encontrada</ui:insert></title>
+	<h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+<h:body>
+    <h:form>
+    	<ui:composition template="/templates/master.xhtml"> 
+        <ui:define name="conteudo">
+            <h1>Um... não encontramos a sua pagina...</h1>  
+            <h:graphicImage library="images" name="05.jpg" />
+        </ui:define>  
+    </ui:composition>
+    </h:form>
+</h:body>
+</html>

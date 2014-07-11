@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<!-- 
+@autor: André Martins
+@contact: andremartins@outlook.com.br
+@cel: 63 8412 1921
+ -->
+<h:head>
+	<title><ui:insert name="title">Lista de Cidades</ui:insert></title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<ui:composition template="/templates/master.xhtml">
+		
+			<ui:define name="conteudo">
+			
+				<p:dataTable value="#{cidadeBean.cidades}"
+				var="cid"
+                paginator="true"
+                rows="10"
+                paginatorTemplate="{CurrentPageReport}
+                {FirstPageLink}
+                {PreviousPageLink} {PageLinks}
+                {NextPageLink} {LastPageLink}
+                {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+                style="width: 40%"
+                lazy="true">                
+				<p:column>
+						<f:facet name="header">
+							Identificador
+						</f:facet>
+   			 			#{cid.idCidade}
+				</p:column>
+
+				<p:column>
+						<f:facet name="header">
+							Cidade
+						</f:facet>
+   			 			#{cid.nome}
+				</p:column>
+
+				<p:column>
+						<f:facet name="header">
+							Estado
+						</f:facet>
+   						 #{cid.estado.nome}
+				</p:column>
+
+				<p:column>
+						<f:facet name="header">
+							Pais
+						</f:facet>
+   						 #{cid.estado.pais.nome}
+				</p:column>
+
+				</p:dataTable>
+			</ui:define>
+		</ui:composition>
+	</h:form>
+</h:body>
+</html>
