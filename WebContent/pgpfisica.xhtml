@@ -20,9 +20,14 @@
 	<p:growl id="mensagens"/>
     <h:outputText value="#{mensagens.mensagemSucesso}:"/>
 		<h:panelGrid columns="4">
-			Nome Completo: <p:inputText value="#{fisicaBean.pessoaFisica.nome}" size="30" maxlength="6"/>
+			Nome Completo: <p:inputText value="#{fisicaBean.pessoaFisica.nome}" size="30" maxlength="14" />
 			Cpf: <p:inputText value="#{fisicaBean.pessoaFisica.cpf}" size="30"/>
-			Cidade: <p:inputText value="#{fisicaBean.pessoaFisica.cidade.idCidade}" size="30"/>	
+			Cidade:
+			<p:selectOneMenu value="#{fisicaBean.pessoaFisica.cidade.idCidade}">
+				<f:selectItem itemLabel="-- Cidade --" noSelectionOption="true" />
+				<f:selectItems value="#{bbCidade.cidades}" var="cid"
+					itemValue="#{cid.idCidade}" itemLabel="#{cid.nome}" />
+			</p:selectOneMenu>	
 			Cep: <p:inputText value="#{fisicaBean.pessoaFisica.cep}" size="15"/>
 			Matricula: <p:inputText value="#{fisicaBean.pessoaFisica.matricula}" />
 			Endereço: <p:inputText value="#{fisicaBean.pessoaFisica.endereco}" size="50"/>
@@ -30,9 +35,7 @@
 			
 			Rg: <p:inputText value="#{fisicaBean.pessoaFisica.rg}" size="20"/>
 			Observações <p:inputTextarea value="#{fisicaBean.pessoaFisica.obs}" />
-			<h:inputHidden></h:inputHidden>
-			<p:commandButton value="salvar" actionListener="#{fisicaBean.mensagemErro}"
-																	update="mensagens"/>	
+			<p:commandButton value=" Cadastro de Pessoa" action="#{fisicaBean.Salvar}" icon="ui-icon-contact" /> 
 		</h:panelGrid>
 		</ui:define>
 		</ui:composition>

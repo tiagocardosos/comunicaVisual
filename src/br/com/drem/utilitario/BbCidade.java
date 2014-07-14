@@ -10,10 +10,12 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
+import br.com.drem.managebean.MbEstado;
 import br.com.drem.util.JPAUtil;
 
 /**
@@ -27,22 +29,24 @@ import br.com.drem.util.JPAUtil;
 public class BbCidade implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private List<Cidade>cidade;
+	private List<Cidade>cidades;
 	private Estado estado;
 	
 	public BbCidade(){
 		this.estado = new Estado();
-		cidade = new ArrayList<Cidade>();
+		cidades = new ArrayList<Cidade>();
 	}
 	
-	 public List<Cidade> getCidade() {
+	 public List<Cidade> getCidades() {
 			 EntityManager em = JPAUtil.getEntityManager();
-			 String consulta = "select c from Cidade c where c.estado.idEstado = :nome";
-			 TypedQuery<Cidade> query = em.createQuery(consulta, Cidade.class);
-			 query.setParameter("nome", estado.getIdEstado());
-			 this.cidade = query.getResultList();
+			 /*String consulta = "select c from Cidade c where c.estado.idEstado = :nome";*/
+			 String consulta = "select c from Cidade c";
+			 Query query = em.createQuery(consulta, Cidade.class);
+			 /*TypedQuery<Cidade> query = em.createQuery(consulta, Cidade.class);*/
+			 /*query.setParameter("nome", estado.getIdEstado());*/
+			 this.cidades = query.getResultList();
 	    	 //em.close();
-		 return cidade;
+		 return cidades;
 	 }
 
 	public Estado getEstado() {
@@ -54,6 +58,6 @@ public class BbCidade implements Serializable{
 	}
 
 	public void setCidade(List<Cidade> cidade) {
-		this.cidade = cidade;
+		this.cidades = cidade;
 	}
 }

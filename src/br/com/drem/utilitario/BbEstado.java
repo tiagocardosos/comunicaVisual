@@ -12,6 +12,7 @@ import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
 import br.com.drem.util.JPAUtil;
 
@@ -26,6 +27,7 @@ import br.com.drem.util.JPAUtil;
 public class BbEstado implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<Estado>estados;
+	
 
 	 public List<Estado> getEstados() {
 		 if(estados == null) {
@@ -36,9 +38,8 @@ public class BbEstado implements Serializable{
 			 this.estados = q.getResultList();
 		 }
 	    	return estados;
-	    
-		 
-	 }
+ }
+
 
 	public void setEstado(List<Estado> estados) {
 		this.estados = estados;

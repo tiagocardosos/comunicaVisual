@@ -27,12 +27,9 @@
 			Cidade:
 			<h:selectOneMenu value="#{mbEstado.pessoa.cidade.estado.idEstado}">
 				<f:selectItem itemLabel="-- Cidade --" noSelectionOption="true" />
-				<f:selectItems value="#{bbCidade.cidade}" var="cid"
+				<f:selectItems value="#{bbCidade.cidades}" var="cid"
 					itemValue="#{cid}" itemLabel="#{cid.nome}" />
-			</h:selectOneMenu>
-
-			
-			
+			</h:selectOneMenu>	
 		</ui:define>
 	</ui:composition>
 </h:body>
