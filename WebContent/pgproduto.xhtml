@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<!-- 
+@autor: André Martins
+@contact: andremartins@outlook.com.br
+@cel: 63 8412 1921
+ -->
+<h:head>
+	<title><ui:insert name="title">Produtos</ui:insert></title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+</h:head>
+<h:body>
+	<ui:composition template="/templates/master.xhtml">
+		<ui:define name="conteudo">
+			<p:growl id="mensagens" />
+			<h:panelGrid columns="2">
+			Nome do Produto: <p:inputText value="#{mbProduto.produto.nomeProduto}" size="50" 
+			maxlength="100" onkeyup="this.value = this.value.toUpperCase()"
+					required="true" requiredMessage="O campo [Nome] é obrigatório."/>
+			
+			Descrição<p:inputText value="#{mbProduto.produto.especificacaoProduto}" size="50"
+					maxlength="254" onkeyup="this.value = this.value.toUpperCase()"
+					required="true" requiredMessage="O campo [Descrição] é obrigatório." />
+			Medida Horizontal: <p:inputText value="#{mbProduto.produto.medidaX}" size="10" maxlength="8" />  
+			Medida Vertical: <p:inputText value="#{mbProduto.produto.medidaY}" size="10" maxlength="8" />                                
+			Preço de Venda: <p:inputText value="#{mbProduto.produto.precoDeMetroVenda}" size="10" maxlength="8" />
+			<h:commandButton value="Cadastro de Pessoa"
+					action="#{mbProduto.salvar}" update="@form" icon="ui-icon-contact" />
+			</h:panelGrid>
+
+
+
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

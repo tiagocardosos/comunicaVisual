@@ -14,9 +14,10 @@ public class MbPagina {
 	public static final String PG_LISTA_DE_ESTADO = "pgestado";
 	public static final String PG_PESSOA_JURIDICA = "pgpjuridica";
 	public static final String HOME = "index";
+	public static final String PG_PRODUTO = "pgproduto";
+	
 	public String pgPessoaFisica(){
 	    return URL + "?faces-redirect=true";
-
 	}
 	public String pgListadeCidade(){
 		return PG_LISTA_DE_CIDADE + "?faces-redirect=true";
@@ -29,5 +30,8 @@ public class MbPagina {
 	}
 	public String home(){
 		return HOME + "?faces-redirect=true";
+	}
+	public String pgProduto(){
+		return PG_PRODUTO + "?faces-redirect=true";
 	}
 }

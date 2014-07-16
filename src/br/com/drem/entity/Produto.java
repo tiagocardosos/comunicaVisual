@@ -17,81 +17,67 @@ public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private Long id;
+	private Long idProduto;
 	
-	private String nome;
+	private String nomeProduto;
 	
-	private String especificacao;
+	private String especificacaoProduto;
 	
-	private String precoDeFornecedor;
+	private String precoDeMetroVenda;
 	
-	private String precoDeVenda;
+	private String medidaX;
 	
-	private String tamanho;
+	private String medidaY;
 
-	public Produto(String nome, String especificacao, String precoDeFornecedor,
-			String precoDeVenda, String tamanho) {
-		super();
-		this.nome = nome;
-		this.especificacao = especificacao;
-		this.precoDeFornecedor = precoDeFornecedor;
-		this.precoDeVenda = precoDeVenda;
-		this.tamanho = tamanho;
+	public Long getIdProduto() {
+		return idProduto;
 	}
 
-	public Produto() {
-		super();
+	public void setIdProduto(Long idProduto) {
+		this.idProduto = idProduto;
 	}
 
-	public Long getId() {
-		return id;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getEspecificacaoProduto() {
+		return especificacaoProduto;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setEspecificacaoProduto(String especificacaoProduto) {
+		this.especificacaoProduto = especificacaoProduto;
 	}
 
-	public String getEspecificacao() {
-		return especificacao;
+	public String getPrecoDeMetroVenda() {
+		return precoDeMetroVenda;
 	}
 
-	public void setEspecificacao(String especificacao) {
-		this.especificacao = especificacao;
+	public void setPrecoDeMetroVenda(String precoDeMetroVenda) {
+		this.precoDeMetroVenda = precoDeMetroVenda;
 	}
 
-	public String getPrecoDeFornecedor() {
-		return precoDeFornecedor;
+	public String getMedidaX() {
+		return medidaX;
 	}
 
-	public void setPrecoDeFornecedor(String precoDeFornecedor) {
-		this.precoDeFornecedor = precoDeFornecedor;
+	public void setMedidaX(String medidaX) {
+		this.medidaX = medidaX;
 	}
 
-	public String getPrecoDeVenda() {
-		return precoDeVenda;
+	public String getMedidaY() {
+		return medidaY;
 	}
 
-	public void setPrecoDeVenda(String precoDeVenda) {
-		this.precoDeVenda = precoDeVenda;
-	}
-
-	public String getTamanho() {
-		return tamanho;
-	}
-
-	public void setTamanho(String tamanho) {
-		this.tamanho = tamanho;
+	public void setMedidaY(String medidaY) {
+		this.medidaY = medidaY;
 	}
 	
 	
-	
+
 	
 }
