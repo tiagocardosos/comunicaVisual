@@ -7,11 +7,19 @@
     xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-	<ui:composition>
-  			<p:commandButton value=" Cadastro de Cliente " action="#{mbPagina.pgPessoaFisica}" icon="ui-icon-contact" />
-  			<p:commandButton value=" Cidades " action="#{mbPagina.pgListadeCidade}" icon="ui-icon-contact" />
-  			<p:commandButton value=" Pessoa Juridica " action="#{mbPagina.pgPessoaJuridica}" icon="ui-icon-contact" />
-  			<p:commandButton value=" Estados " action="#{mbPagina.pgListadeEstado}" icon="ui-icon-contact" />
-  	</ui:composition> 
+	<h:panelGrid columns="2">
+	<p:menuButton value="Atalhos">
+        <p:menuitem value="Home" action="#{mbPagina.home}" icon="ui-icon-home"/>
+        <p:separator />
+    </p:menuButton>
+    	
+  	<p:menuButton value="Cadastro">
+        <p:menuitem value="Cadastro de Cliente" action="#{mbPagina.pgPessoaFisica}" icon="ui-icon-disk"/>
+        <p:menuitem value="Cidades" action="#{mbPagina.pgListadeCidade}" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:menuitem value="Pessoa Juridica" action="#{mbPagina.pgPessoaJuridica}" icon="ui-icon-close"/>
+        <p:separator />
+        <p:menuitem value="Homepage" url="http://localhost:8080/comunicaVisual/jsf/index.xhtml" icon="ui-icon-extlink"/>
+    </p:menuButton>
+</h:panelGrid>
 </h:body>
 </html>
