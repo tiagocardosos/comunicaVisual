@@ -12,6 +12,7 @@ public class MbPagina {
 	public static final String URL = "pgpfisica";
 	public static final String PG_LISTA_DE_CIDADE = "pglistadecidade";
 	public static final String PG_LISTA_DE_ESTADO = "pgestado";
+	public static final String PG_PESSOA_JURIDICA = "pgpjuridica";
 	public String pgPessoaFisica(){
 	    return URL + "?faces-redirect=true";
 
@@ -21,5 +22,8 @@ public class MbPagina {
 	}
 	public String pgListadeEstado(){
 		return PG_LISTA_DE_ESTADO + "?faces-redirect=true";
+	}
+	public String pgPessoaJuridica(){
+		return PG_PESSOA_JURIDICA + "?faces-redirect=true";
 	}
 }

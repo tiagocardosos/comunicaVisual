@@ -11,7 +11,7 @@
 @cel: 63 8412 1921
  -->
 <h:head>
-	<title><ui:insert name="title">Cadastro de Pessoa Fisica</ui:insert></title>
+	<title><ui:insert name="title">Cadastro de Pessoa Juridica</ui:insert></title>
 </h:head>
 <h:body>
 	<h:form>
@@ -20,41 +20,41 @@
 	<p:growl id="mensagens"/>
     <h:outputText value="#{mensagens.mensagemSucesso}:"/>
 		<h:panelGrid columns="4">
-			Cpf: <p:inputText value="#{fisicaBean.pessoaFisica.cpf}" size="30"/>
+			Cnpj: <p:inputText value="#{mbPJuridica.pessoaJuridica.cnpj}" size="30"/>
 			
-			Nome.: <p:inputText value="#{fisicaBean.pessoaFisica.nome}" size="30" maxlength="14" 
+			Nome.: <p:inputText value="#{mbPJuridica.pessoaJuridica.razaoSocial}" size="30" maxlength="14" 
 			 onkeyup="this.value = this.value.toUpperCase()" required="true"
                                 requiredMessage="O campo [Nome] é obrigatório."/>
                                 
-			Rg: <p:inputText value="#{fisicaBean.pessoaFisica.rg}" size="20"/>
+			Inscricão estadual: <p:inputText value="#{mbPJuridica.pessoaJuridica.inscricaoEstadual}" size="20"/>
 			
 			Cidade:
-			<p:selectOneMenu value="#{fisicaBean.pessoaFisica.cidade.idCidade}">
+			<p:selectOneMenu value="#{mbPJuridica.pessoaJuridica.cidade.idCidade}">
 				<f:selectItem itemLabel="-- Cidade --" noSelectionOption="true" />
 				<f:selectItems value="#{bbCidade.cidades}" var="cid"
 					itemValue="#{cid.idCidade}" itemLabel="#{cid.nome}" />
 			</p:selectOneMenu>
 			
 			
-			Celular: <p:inputText value="#{fisicaBean.pessoaFisica.contato.telefoneTwo}" size="15" maxlength="14" 
+			Celular: <p:inputText value="#{mbPJuridica.pessoaJuridica.contato.telefoneTwo}" size="15" maxlength="14" 
 			required="true" requiredMessage="O campo [Celular] é obrigatório."/>
-			Tel.: <p:inputText value="#{fisicaBean.pessoaFisica.contato.telefoneOne}" size="15" maxlength="14" 
+			Tel.: <p:inputText value="#{mbPJuridica.pessoaJuridica.contato.telefoneOne}" size="15" maxlength="14" 
 			required="true" requiredMessage="O campo [Telefone] é obrigatório."/>
-			E-mail: <p:inputText value="#{fisicaBean.pessoaFisica.contato.email}" size="20" maxlength="20" 
+			E-mail: <p:inputText value="#{mbPJuridica.pessoaJuridica.contato.email}" size="20" maxlength="20" 
 			onkeyup="this.value = this.value.toLowerCase()" required="true"
                                 requiredMessage="O campo [E-Mail] é obrigatório."/>
 			
-			Cep: <p:inputText value="#{fisicaBean.pessoaFisica.cep}" size="15"/>
-			Matricula: <p:inputText value="#{fisicaBean.pessoaFisica.matricula}" />
-			End.: <p:inputText value="#{fisicaBean.pessoaFisica.endereco}" size="50" 
+			Cep: <p:inputText value="#{mbPJuridica.pessoaJuridica.cep}" size="15"/>
+			Matricula: <p:inputText value="#{mbPJuridica.pessoaJuridica.matricula}" />
+			End.: <p:inputText value="#{mbPJuridica.pessoaJuridica.endereco}" size="50" 
 			onkeyup="this.value = this.value.toUpperCase()" required="true"
                                 requiredMessage="O campo [Endereço] é obrigatório."/>
 			
 			
-			Obs.: <p:inputTextarea value="#{fisicaBean.pessoaFisica.obs}" />
+			Obs.: <p:inputTextarea value="#{mbPJuridica.pessoaJuridica.obs}" />
 			<h:inputHidden/>
 			<h:inputHidden/>
-			<h:commandButton value="Cadastro de Pessoa" action="#{fisicaBean.salvar}" update="@form" icon="ui-icon-contact" /> 
+			<h:commandButton value="Salvar" action="#{mbPJuridica.salvar}" update="@form" icon="ui-icon-contact" /> 
 		</h:panelGrid>
 		</ui:define>
 		</ui:composition>

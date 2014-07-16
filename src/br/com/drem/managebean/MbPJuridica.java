@@ -1,4 +1,5 @@
 package br.com.drem.managebean;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,17 +11,21 @@ import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.drem.dao.PessoaDao;
-import br.com.drem.dao.PessoaFisicaDao;
+import br.com.drem.dao.PJuridicaDao;
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
-import br.com.drem.entity.Pessoa;
-import br.com.drem.entity.PessoaFisica;
+import br.com.drem.entity.PessoaJuridica;
 import br.com.drem.util.JPAUtil;
 
-@ManagedBean(name="fisicaBean")
+/**
+ * @author AndreMart
+ * @contacts: andremartins@outlook.com.br;andre.drem@gmail.com
+ * @tel: 63 8412 1921
+ * @site: drem.com.br
+ */
+@ManagedBean(name="mbPJuridica")
 @ViewScoped
-public class BeanPessoaFisica {
+public class MbPJuridica {
 	
 	private final String SUCESSO = "Operação realizada com sucesso";
 	private final String ERRO = "Ops! Ocorreu um erro inesperado";
@@ -28,12 +33,13 @@ public class BeanPessoaFisica {
 	private List<Cidade>cidades;
 	private Estado estado;
 	private Cidade cidade;
-	private PessoaFisica pessoaFisica;
-	private PessoaFisicaDao pessoaFisicaDao;
+	private PessoaJuridica pessoaJuridica;
+	private PJuridicaDao pJuridicaDao;
+	
 
-	public BeanPessoaFisica(){
-		this.pessoaFisica = new PessoaFisica();
-		this.pessoaFisicaDao = new PessoaFisicaDao();
+	public MbPJuridica(){
+		this.pessoaJuridica = new PessoaJuridica();
+		this.pJuridicaDao = new PJuridicaDao();
 	}
 
 	 public List<Estado> getEstados() {
@@ -94,27 +100,31 @@ public class BeanPessoaFisica {
 		this.cidade = cidade;
 	}
 
-
-	public PessoaFisica getPessoaFisica() {
-		return pessoaFisica;
+	public PessoaJuridica getPessoaJuridica() {
+		return pessoaJuridica;
 	}
 
-
-	public void setPessoaFisica(PessoaFisica pessoaFisica) {
-		this.pessoaFisica = pessoaFisica;
+	public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
+		this.pessoaJuridica = pessoaJuridica;
 	}
-	
-	
+
+	public PJuridicaDao getpJuridicaDao() {
+		return pJuridicaDao;
+	}
+
+	public void setpJuridicaDao(PJuridicaDao pJuridicaDao) {
+		this.pJuridicaDao = pJuridicaDao;
+	}
+
 	public String salvar(){
 		/*isso será trocado por cascade ;) */
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
-		em.persist(pessoaFisica.getContato());
+		em.persist(pessoaJuridica.getContato());
 		em.getTransaction().commit();
 		em.close();
 		
-		pessoaFisicaDao.salvar(pessoaFisica);
-		return "pgpfisica";
+		pJuridicaDao.salvar(pessoaJuridica);
+		return "pgpjuridica";
 	}
-
 }

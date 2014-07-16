@@ -1,10 +1,7 @@
 package br.com.drem.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-
-import br.com.drem.entity.PessoaFisica;
+import br.com.drem.entity.PessoaJuridica;
 import br.com.drem.util.JPAUtil;
 
 /**
@@ -13,13 +10,13 @@ import br.com.drem.util.JPAUtil;
  * @tel: 63 8412 1921
  * @site: drem.com.br
  */
-public class PessoaFisicaDao {
-	
+public class PJuridicaDao {
+
 	/**Salvar uma pessoaFisica*/
-	public void salvar(PessoaFisica pessoaFisica) {
+	public void salvar(PessoaJuridica pessoaJuridica) {
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
-		em.persist(pessoaFisica);
+		em.persist(pessoaJuridica);
 		em.getTransaction().commit();
 		em.close();		
 	}
