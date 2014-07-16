@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
@@ -18,10 +19,9 @@ import br.com.drem.entity.PessoaFisica;
 import br.com.drem.util.JPAUtil;
 
 @ManagedBean(name="fisicaBean")
+@ViewScoped
 public class BeanPessoaFisica {
 	
-	Pessoa pessoa;
-	PessoaDao pesDao;
 	private final String SUCESSO = "Operação realizada com sucesso";
 	private final String ERRO = "Ops! Ocorreu um erro inesperado";
 	private List<Estado>estados;
@@ -31,15 +31,10 @@ public class BeanPessoaFisica {
 	private PessoaFisica pessoaFisica;
 	private PessoaFisicaDao pessoaFisicaDao;
 
-	
 	public BeanPessoaFisica(){
-		this.pessoa = new Pessoa();
-		this.estados = new ArrayList<Estado>();
-		this.cidades = new ArrayList<Cidade>();
 		this.pessoaFisica = new PessoaFisica();
 		this.pessoaFisicaDao = new PessoaFisicaDao();
 	}
-	
 
 	 public List<Estado> getEstados() {
 		 if(estados == null) {
@@ -52,16 +47,16 @@ public class BeanPessoaFisica {
 	    	return null; 
 	 }
 	 public List<Cidade> getCidades() {
-		 EntityManager em = JPAUtil.getEntityManager();        
-         Query query = em.createQuery("select c from Cidade c where c.estado = :estado");
-         query.setParameter("estado", estado);
-         return query.getResultList();
+		 if(cidades == null) {
+			 this.cidades = new ArrayList<Cidade>();
+			 EntityManager em = JPAUtil.getEntityManager();        
+			 Query query = em.createQuery("select c from Cidade c where c.estado = :estado");
+			 query.setParameter("estado", estado);
+			 return query.getResultList();
         // em.close();
- }
-	 public String Salvar(){
-		 pessoaFisicaDao.salvar(pessoaFisica);
+		 } 
 		 return null;
-	 }
+ }
 
 	
 	public void mensagemSucesso(ActionEvent event) {
@@ -73,29 +68,14 @@ public class BeanPessoaFisica {
 	    FacesContext instance = FacesContext.getCurrentInstance();
 	    instance.addMessage(null,
 	new FacesMessage(FacesMessage.SEVERITY_ERROR,
-	                 ERRO,
-	ERRO) );}
+	                 ERRO, ERRO) );}
 
 	
-	public PessoaDao getPesDao() {
-		return pesDao;
-	}
-	
-	
-
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-
-	public void setPesDao(PessoaDao pesDao) {
-		this.pesDao = pesDao;
-	}
 
 	public Estado getEstado() {
+		if (estado == null) {
+			this.estados = new ArrayList<Estado>();
+		}
 		return estado;
 	}
 
@@ -104,6 +84,9 @@ public class BeanPessoaFisica {
 	}
 
 	public Cidade getCidade() {
+		if ( cidade == null){
+			this.cidade = new Cidade();
+		}
 		return cidade;
 	}
 
@@ -122,5 +105,16 @@ public class BeanPessoaFisica {
 	}
 	
 	
+	public String salvar(){
+		/*isso será trocado por cascade ;) */
+		EntityManager em = JPAUtil.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(pessoaFisica.getContato());
+		em.getTransaction().commit();
+		em.close();
+		
+		pessoaFisicaDao.salvar(pessoaFisica);
+		return "pgpfisica";
+	}
 
 }

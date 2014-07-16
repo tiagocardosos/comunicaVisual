@@ -30,17 +30,6 @@ public class Estado implements Serializable{
 	
 	@ManyToOne
 	private Pais pais;
-	
-	/* Construtores de Estado */
-	
-	public Estado() {
-		this.cidade = new ArrayList<Cidade>();
-		this.pais = new Pais();
-	}
-	
-	/* Fim dos construtores de Estado */
-	
-	/* gethers and sethers */
 
 	public long getIdEstado() {
 		return idEstado;
@@ -77,9 +66,6 @@ public class Estado implements Serializable{
 		this.pais = pais;
 	}
 	public List<Cidade> getCidade() {
-		if(cidade == null){
-			cidade = new ArrayList<Cidade>();
-		}
 		return cidade;
 	}
 	public void setCidade(List<Cidade> cidade) {

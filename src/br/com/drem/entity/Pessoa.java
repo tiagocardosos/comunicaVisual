@@ -22,7 +22,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.com.drem.entity.*;
 
 /** a anotacao Inheritance é utilizada para criacao de herança dentro de nossa jpa
  *  com ela é possivel criar as tabelas com heranca dentro do banco de dados
@@ -63,6 +66,9 @@ public class Pessoa implements Serializable {
 	@Column(name = "observacoes")
 	private String obs;
 	
+	@OneToOne
+	private Contato contato;
+	
 	/**Relacionamentos da entidade*/
 	/*@ManyToOne
 	private Estado estado = new Estado();
@@ -70,10 +76,6 @@ public class Pessoa implements Serializable {
 	@ManyToOne
 	/**JoincColumn é definido o nome da chave estrangeira*/
 	private Cidade cidade;
-	
-	public Pessoa(){
-		this.cidade = new Cidade();
-	}
 	
 	/* gethers and sethers */
 	public Long getId() {
@@ -108,11 +110,28 @@ public class Pessoa implements Serializable {
 		this.obs = obs;
 	}
 	public Cidade getCidade() {
+		if(cidade == null){
+			this.cidade = new Cidade();
+		}
 		return cidade;
 	}
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
+
+	public Contato getContato() {
+		if(contato == null) {
+			this.contato = new Contato();
+		}
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
+	
+	
 	
 	
 

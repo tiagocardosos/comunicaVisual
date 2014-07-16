@@ -1,31 +1,37 @@
 package br.com.drem.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/*@Entity(name="contato")*/
-public class Contato {
-	
-	@Id @GeneratedValue
-	private String telefone;
+@Entity(name="contato")
+public class Contato implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private Long idContato;
+	private String telefoneOne;
+	private String telefoneTwo;
 	
 	String email;
 
-	public Contato(String telefone, String email) {
-		super();
-		this.telefone = telefone;
-		this.email = email;
-	}
-	
-	public Contato() {}
-
-	public String getTelefone() {
-		return telefone;
+	public String getTelefoneOne() {
+		return telefoneOne;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setTelefoneOne(String telefoneOne) {
+		this.telefoneOne = telefoneOne;
+	}
+
+	public String getTelefoneTwo() {
+		return telefoneTwo;
+	}
+
+	public void setTelefoneTwo(String telefoneTwo) {
+		this.telefoneTwo = telefoneTwo;
 	}
 
 	public String getEmail() {
@@ -35,7 +41,14 @@ public class Contato {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	public Long getIdContato() {
+		return idContato;
+	}
+
+	public void setIdContato(Long idContato) {
+		this.idContato = idContato;
+	}
+
 	
 }

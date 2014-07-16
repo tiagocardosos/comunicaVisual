@@ -17,6 +17,7 @@
 		<class>br.com.drem.entity.Funcionario</class>
 		<class>br.com.drem.entity.Venda</class>
 		<class>br.com.drem.entity.Produto</class>
+		<class>br.com.drem.entity.Contato</class>
 		
 		<!-- se determinada entidade não estiver participando da query ela vai ser excluida do trabalho -->
 		<exclude-unlisted-classes>true</exclude-unlisted-classes> 
@@ -35,10 +36,8 @@
 			<property name="javax.persistence.jdbc.password" value="1" />
 			
 			<!-- nome do schema-->
-			<property name="hibernate.default_schema" value="dremcom_drem" />
+			<property name="hibernate.default_schema" value="drem" />
 			
-			<!-- metodo para criacao, atualizacao ou exclusao de tables -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
 			
 			<!-- para visualizarmos as querys no console -->
 			<property name="hibernate.show_sql" value="true" />
@@ -48,6 +47,12 @@
 			
 			<!-- dialeto do banco de dados -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			
+			<!-- metodo para criacao, atualizacao ou exclusao de tables -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			
+			<property name="hibernate.cache.use_second_level_cache" value="true"/>
 			
 			<!--  -->
 			<property name="hibernate.cache.use_query_cache" value="true" />

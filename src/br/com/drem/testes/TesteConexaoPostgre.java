@@ -52,7 +52,7 @@ public class TesteConexaoPostgre {
 		pes.setNome("Andrades");
 		pes.setEndereco("67 sul");
 		pes.setCep("7700000");
-		//pes.setCidade(cidade);
+		pes.setCidade(cidade);
 		EntityManager em3 = JPAUtil.getEntityManager();
 		em3.getTransaction().begin();
 		em3.persist(pes);

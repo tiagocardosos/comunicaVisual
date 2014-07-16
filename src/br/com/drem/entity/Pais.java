@@ -19,7 +19,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="pais")
 public class Pais {
-	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private long idPais;
 	@Column(name="nome")
 	private String nome;
@@ -28,26 +29,6 @@ public class Pais {
 	
 	@OneToMany(mappedBy="pais")
 	List<Estado>estado;
-	
-	/* construtores de Pais */
-	
-	public Pais(){}
-	
-	public Pais(long idPais, String nome, String sigla) {
-		super();
-		this.idPais = idPais;
-		this.nome = nome;
-		this.sigla = sigla;
-	}
-	
-	public Pais( String nome, String sigla) {
-		super();
-		this.idPais = getIdPais();
-		this.nome = nome;
-		this.sigla = sigla;
-	}
-	
-	/* Fim dos construtores */
 
 
 	public long getIdPais() {

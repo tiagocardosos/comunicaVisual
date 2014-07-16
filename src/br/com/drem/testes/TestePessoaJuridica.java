@@ -19,8 +19,8 @@ public class TestePessoaJuridica {
 		PessoaJuridica pessoaJuridica = new PessoaJuridica();
 		
 		Pais pais = new Pais();
-		pais.setNome("Qualquer");
-		pais.setSigla("ZZ");
+		pais.setNome("Brasil");
+		pais.setSigla("Br");
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 		em.persist(pais);
@@ -28,39 +28,7 @@ public class TestePessoaJuridica {
 		em.close();
 		
 		
-		Estado estado = new Estado();
-		estado.setPais(pais);
-		estado.setNome("Estado");
-		estado.setUf("ZA");
-		EntityManager em1 = JPAUtil.getEntityManager();
-		em1.getTransaction().begin();
-		em1.persist(estado);
-		em1.getTransaction().commit();
-		em1.close();
 		
-		Cidade cidade = new Cidade();
-		cidade.setEstado(estado);
-		cidade.setNome("ZUUU");
-		EntityManager em2 = JPAUtil.getEntityManager();
-		em2.getTransaction().begin();
-		em2.persist(cidade);
-		em2.getTransaction().commit();
-		em2.close();
-		
-		pessoaJuridica.setNome("Nova pessoa fisica");
-		pessoaJuridica.setEndereco("697 sul");
-		pessoaJuridica.setCep("77000001");
-		pessoaJuridica.setCnpj("123456");
-		pessoaJuridica.setInscricaoEstadual("12345");
-		pessoaJuridica.setMatricula("fc20891");
-		pessoaJuridica.setRazaoSocial("Martins e Silva ltda");
-		//pessoaJuridica.setCidade(cidade);
-		
-		EntityManager em3 = JPAUtil.getEntityManager();
-		em3.getTransaction().begin();
-		em3.persist(pessoaJuridica);
-		em3.getTransaction().commit();
-		em3.close();
 	}
 
 }
