@@ -21,6 +21,26 @@ public class ProdutoDao {
 		em.close();		
 	}
 	
+	/*** excluir um produto */
+/*	public void excluir(Produto produto) {
+		EntityManager em = JPAUtil.getEntityManager();
+		em.getTransaction().begin();
+		em.remove(produto);
+		em.getTransaction().commit();
+		em.close();		
+	}*/
+	public void excluir(Produto produto) {
+        try {
+        	EntityManager em = JPAUtil.getEntityManager();
+    		em.getTransaction().begin();
+    		produto = em.find(Produto.class, produto.getIdProduto());
+            em.remove(produto);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+	
 	/**Buscar pessoa por id*/
 /*	public Pessoa buscaPessoa(long id){
 	    EntityManager em = JPAUtil.getEntityManager();
@@ -29,17 +49,6 @@ public class ProdutoDao {
 	    return null;
 	}
 	
-	*//** excluir uma pessoa*//*
-	public String excluir(Pessoa pessoa) {
-		EntityManager em = JPAUtil.getEntityManager();
-		em.getTransaction().begin();
-		em.remove(pessoa);
-		em.getTransaction().commit();
-		em.close();
-		String s =  pessoa.getNome();
-		return s;
-		
-	}
 	
 	*//** atualizar uma pessoa*//*
 	public String atualizar(Pessoa pessoa) {

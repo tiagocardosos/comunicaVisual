@@ -29,13 +29,74 @@
 			Medida Horizontal: <p:inputText value="#{mbProduto.produto.medidaX}" size="10" maxlength="8" />  
 			Medida Vertical: <p:inputText value="#{mbProduto.produto.medidaY}" size="10" maxlength="8" />                                
 			Preço de Venda: <p:inputText value="#{mbProduto.produto.precoDeMetroVenda}" size="10" maxlength="8" />
-			<h:commandButton value="Cadastro de Pessoa"
+			<h:commandButton value="Salvar"
 					action="#{mbProduto.salvar}" update="@form" icon="ui-icon-contact" />
 			</h:panelGrid>
+			
+			<p:dataTable value="#{mbProduto.produtos}"
+				var="produtos"
+                paginator="true"
+                rows="10"
+                paginatorTemplate="{CurrentPageReport}
+                {FirstPageLink}
+                {PreviousPageLink} {PageLinks}
+                {NextPageLink} {LastPageLink}
+                {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+                style="width: 80%"
+                lazy="true">                
+				<p:column>
+						<f:facet name="header">
+							Identificador
+						</f:facet>
+   			 			#{produtos.idProduto}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Nome
+						</f:facet>
+   			 			#{produtos.nomeProduto}
+				</p:column>
 
-
-
-
+				<p:column>
+						<f:facet name="header">
+							Especificações
+						</f:facet>
+   			 			#{produtos.especificacaoProduto}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Medida Horizontal
+						</f:facet>
+   			 			#{produtos.medidaX}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Medida Vertical
+						</f:facet>
+   			 			#{produtos.medidaY}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Preço de Venda
+						</f:facet>
+   			 			#{produtos.precoDeMetroVenda}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							<h:outputText value="Ações" />
+						</f:facet>
+						<h:commandButton value="excluir"
+								action="#{mbProduto.excluir}"
+							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false" />
+				</p:column>
+						
+				</p:dataTable>
 		</ui:define>
 	</ui:composition>
 </h:body>
