@@ -17,7 +17,7 @@
 <h:body>
 	<ui:composition template="/templates/master.xhtml">
 		<ui:define name="conteudo">
-			<p:growl id="mensagens" />
+			<!-- <p:growl id="mensagens" />
 			<h:panelGrid columns="2">
 			Nome do Produto: <p:inputText value="#{mbProduto.produto.nomeProduto}" size="50" 
 			maxlength="100" onkeyup="this.value = this.value.toUpperCase()"
@@ -31,9 +31,8 @@
 			Preço de Venda: <p:inputText value="#{mbProduto.produto.precoDeMetroVenda}" size="10" maxlength="8" />
 			<h:commandButton value="Salvar"
 					action="#{mbProduto.salvar}" update="@form" icon="ui-icon-contact" />
-			</h:panelGrid>
-			
-			<p:dataTable value="#{mbProduto.produtos}"
+			</h:panelGrid> -->
+			<p:dataTable value="#{mbProduto.produtos}" 
 				var="produtos"
                 paginator="true"
                 rows="10"
@@ -91,9 +90,11 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
-						<h:commandButton value="excluir"
+						<p:commandButton value="excluir"
 								action="#{mbProduto.excluir}"
-							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false" />
+							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false">
+							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
+					</p:commandButton>
 				</p:column>
 						
 				</p:dataTable>
