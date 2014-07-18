@@ -61,14 +61,7 @@ public class MbProduto implements Serializable{
 	}
 	
 	public String excluir() {
-		EntityManager em = JPAUtil.getEntityManager();
-		em.getTransaction().begin();
-		
-		produto = em.find(Produto.class, produto.getIdProduto());
-		
-        em.remove(produto);
-        em.getTransaction().commit();
-        em.close();
+		produtoDao.excluir(produto);
 		return null;
 	}
 	public String salvar(){

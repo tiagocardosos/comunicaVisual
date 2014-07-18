@@ -1,11 +1,12 @@
 package br.com.drem.managebean;
 
-
-
-import java.util.ArrayList;
+/**
+ * @author AndreMart
+ * @contacts: andremartins@outlook.com.br;andre.drem@gmail.com
+ * @tel: 63 8412 1921
+ * @site: drem.com.br
+ */
 import java.util.List;
-
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -16,7 +17,7 @@ import br.com.drem.entity.Cidade;
 import br.com.drem.util.JPAUtil;
 
 @ManagedBean
-public class CidadeBean {
+public class MbCidade {
 	private Cidade cidade;
     private List<Cidade> cidades;
     private String aux = null;

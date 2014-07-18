@@ -14,7 +14,7 @@ import br.com.drem.dao.PessoaDao;
 import br.com.drem.entity.Pessoa;
 import br.com.drem.util.*;
 @ManagedBean
-public class MBeanPessoa {
+public class MbPessoa {
 	
 	Pessoa pes = new Pessoa();
 	PessoaDao pesDao = new PessoaDao();
