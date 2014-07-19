@@ -9,13 +9,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import br.com.drem.dao.PFisicaDao;
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
 import br.com.drem.entity.PessoaFisica;
 import br.com.drem.util.JPAUtil;
 
-@ManagedBean(name="fisicaBean")
+@ManagedBean(name="mbPessoaFisica")
 @ViewScoped
 public class MbPFisica {
 	
@@ -23,6 +24,7 @@ public class MbPFisica {
 	private final String ERRO = "Ops! Ocorreu um erro inesperado";
 	private List<Estado>estados;
 	private List<Cidade>cidades;
+	private List<PessoaFisica>pfs;
 	private Estado estado;
 	private Cidade cidade;
 	private PessoaFisica pessoaFisica;
@@ -31,6 +33,7 @@ public class MbPFisica {
 	public MbPFisica(){
 		this.pessoaFisica = new PessoaFisica();
 		this.pessoaFisicaDao = new PFisicaDao();
+		this.pfs = new ArrayList<PessoaFisica>();
 	}
 
 	 public List<Estado> getEstados() {
@@ -42,6 +45,14 @@ public class MbPFisica {
 			 this.estados = q.getResultList();
 		 }
 	    	return null; 
+	 }
+	 public List<PessoaFisica> getPessoaFisicas() {
+			 EntityManager em = JPAUtil.getEntityManager();
+			 Query q = em.createQuery("select a from PessoaFisica a",
+					 PessoaFisica.class);
+			 this.pfs = q.getResultList();
+			 em.close();
+	    	return pfs; 
 	 }
 	 public List<Cidade> getCidades() {
 		 if(cidades == null) {
@@ -102,6 +113,21 @@ public class MbPFisica {
 	}
 	
 	
+	
+	
+	public List<PessoaFisica> getPessoasFisicas() {
+		return pfs;
+	}
+
+	public void setPessoasFisicas(List<PessoaFisica> pessoasFisicas) {
+		this.pfs = pessoasFisicas;
+	}
+	
+	public String excluir() {
+		pessoaFisicaDao.excluir(pessoaFisica);
+		return null;
+	}
+
 	public String salvar(){
 		/*isso será trocado por cascade ;) */
 		EntityManager em = JPAUtil.getEntityManager();

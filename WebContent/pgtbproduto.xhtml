@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<!-- 
+@autor: André Martins
+@contact: andremartins@outlook.com.br
+@cel: 63 8412 1921
+ -->
+<h:head>
+	<title><ui:insert name="title">Modelo de Página</ui:insert></title>
+	<h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+<h:body>
+    	<ui:composition template="/templates/master.xhtml"> 
+        <ui:define name="conteudo">
+        
+        <p:dataTable value="#{mbProduto.produtos}" 
+				var="produtos"
+                paginator="true"
+                rows="10"
+                paginatorTemplate="{CurrentPageReport}
+                {FirstPageLink}
+                {PreviousPageLink} {PageLinks}
+                {NextPageLink} {LastPageLink}
+                {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+                style="width: 80%"
+                lazy="true">                
+				<p:column>
+						<f:facet name="header">
+							Identificador
+						</f:facet>
+   			 			#{produtos.idProduto}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Nome
+						</f:facet>
+   			 			#{produtos.nomeProduto}
+				</p:column>
+
+				<p:column>
+						<f:facet name="header">
+							Especificações
+						</f:facet>
+   			 			#{produtos.especificacaoProduto}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Medida Horizontal
+						</f:facet>
+   			 			#{produtos.medidaX}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Medida Vertical
+						</f:facet>
+   			 			#{produtos.medidaY}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Preço de Venda
+						</f:facet>
+   			 			#{produtos.precoDeMetroVenda}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							<h:outputText value="Ações" />
+						</f:facet>
+						<p:commandButton value="excluir"
+								action="#{mbProduto.excluir}"
+							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false">
+							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
+					</p:commandButton>
+				</p:column>
+						
+				</p:dataTable>
+            
+        </ui:define>  
+    </ui:composition>
+</h:body>
+</html>

@@ -5,6 +5,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.drem.entity.PessoaFisica;
+import br.com.drem.entity.Produto;
 import br.com.drem.util.JPAUtil;
 
 /**
@@ -22,6 +23,20 @@ public class PFisicaDao {
 		em.persist(pessoaFisica);
 		em.getTransaction().commit();
 		em.close();		
+	}
+
+	public void excluir(PessoaFisica pessoaFisica) {
+		try {
+			EntityManager em = JPAUtil.getEntityManager();
+			em.getTransaction().begin();
+			pessoaFisica = em.find(PessoaFisica.class, pessoaFisica.getId());
+			em.remove(pessoaFisica);
+			em.getTransaction().commit();
+			em.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 	
 	/**Buscar pessoa por id*/

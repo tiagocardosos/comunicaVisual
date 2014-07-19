@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<!-- 
+@autor: André Martins
+@contact: andremartins@outlook.com.br
+@cel: 63 8412 1921
+ -->
+<h:head>
+	<title><ui:insert name="title">Modelo de Página</ui:insert></title>
+	<h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+<h:body>
+    	<ui:composition template="/templates/master.xhtml"> 
+        <ui:define name="conteudo">
+        
+          <p:dataTable value="#{mbPJuridica.pessoaJuridicas}" 
+				var="pessoas"
+                paginator="true"
+                rows="10"
+                paginatorTemplate="{CurrentPageReport}
+                {FirstPageLink}
+                {PreviousPageLink} {PageLinks}
+                {NextPageLink} {LastPageLink}
+                {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+                style="width: 80%"
+                lazy="true">                
+				<p:column>
+						<f:facet name="header">
+							Identificador
+						</f:facet>
+   			 			#{pessoas.id}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Nome
+						</f:facet>
+   			 			#{pessoas.razaoSocial}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							CNPJ
+						</f:facet>
+   			 			#{pessoas.cnpj}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Matricula
+						</f:facet>
+   			 			#{pessoas.matricula}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Endereço
+						</f:facet>
+   			 			#{pessoas.endereco}
+				</p:column>
+				<p:column>
+						<f:facet name="header">
+							IE
+						</f:facet>
+   			 			#{pessoas.inscricaoEstadual}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							CEP
+						</f:facet>
+   			 			#{pessoas.cep}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							Obs.:
+						</f:facet>
+   			 			#{pessoas.obs}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							<h:outputText value="Ações" />
+						</f:facet>
+						<p:commandButton value="excluir"
+								action="#{mbPJuridica.excluir}"
+							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.nome}  ?')) return false">
+							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPJuridica.pessoaJuridica}"/>
+					</p:commandButton>
+				</p:column>
+						
+				</p:dataTable>
+            
+        </ui:define>  
+    </ui:composition>
+</h:body>
+</html>

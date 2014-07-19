@@ -7,7 +7,7 @@
     xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-	<h:panelGrid columns="2">
+	<h:panelGrid columns="4">
 	<p:menuButton value="Atalhos">
         <p:menuitem value="Home" action="#{mbPagina.home}" icon="ui-icon-home"/>
         <p:separator />
@@ -15,11 +15,18 @@
     	
   	<p:menuButton value="Cadastro">
         <p:menuitem value="Pessoa Fisica" action="#{mbPagina.pgPessoaFisica}" icon="ui-icon-disk"/>
-        <p:menuitem value="Cidades cadastradas" action="#{mbPagina.pgListadeCidade}" icon="ui-icon-arrowrefresh-1-w"/>
         <p:menuitem value="Pessoa Juridica" action="#{mbPagina.pgPessoaJuridica}" icon="ui-icon-close"/>
         <p:menuitem value="Produtos" action="#{mbPagina.pgProduto}" icon="ui-icon-disk"/>
         <p:separator />
         <p:menuitem value="Homepage" url="http://localhost:8080/comunicaVisual/jsf/index.xhtml" icon="ui-icon-extlink"/>
+    </p:menuButton>
+    
+    <p:menuButton value="Ações">
+        <p:menuitem value="Produtos" action="#{mbPagina.pgTbProduto}" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:menuitem value="Cidades" action="#{mbPagina.pgListadeCidade}" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:menuitem value="Pessoa Fisica" action="#{mbPagina.pgTbPFisica}" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:menuitem value="Pessoa Jurídica" action="#{mbPagina.pgTbPJuridica}" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:separator />
     </p:menuButton>
 </h:panelGrid>
 </h:body>

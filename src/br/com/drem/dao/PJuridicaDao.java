@@ -1,6 +1,8 @@
 package br.com.drem.dao;
 
 import javax.persistence.EntityManager;
+
+import br.com.drem.entity.PessoaFisica;
 import br.com.drem.entity.PessoaJuridica;
 import br.com.drem.util.JPAUtil;
 
@@ -19,6 +21,19 @@ public class PJuridicaDao {
 		em.persist(pessoaJuridica);
 		em.getTransaction().commit();
 		em.close();		
+	}
+	public void excluir(PessoaJuridica pessoaJuridica) {
+		try {
+			EntityManager em = JPAUtil.getEntityManager();
+			em.getTransaction().begin();
+			pessoaJuridica = em.find(PessoaJuridica.class, pessoaJuridica.getId());
+			em.remove(pessoaJuridica);
+			em.getTransaction().commit();
+			em.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 	
 	/**Buscar pessoa por id*/

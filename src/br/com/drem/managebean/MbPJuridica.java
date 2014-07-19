@@ -14,6 +14,7 @@ import javax.persistence.Query;
 import br.com.drem.dao.PJuridicaDao;
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
+import br.com.drem.entity.PessoaFisica;
 import br.com.drem.entity.PessoaJuridica;
 import br.com.drem.util.JPAUtil;
 
@@ -34,12 +35,14 @@ public class MbPJuridica {
 	private Estado estado;
 	private Cidade cidade;
 	private PessoaJuridica pessoaJuridica;
-	private PJuridicaDao pJuridicaDao;
+	private List<PessoaJuridica> pessoaJuridicas;
+	private PJuridicaDao pessoaJuridicaDao;
 	
 
 	public MbPJuridica(){
 		this.pessoaJuridica = new PessoaJuridica();
-		this.pJuridicaDao = new PJuridicaDao();
+		this.pessoaJuridicaDao = new PJuridicaDao();
+		this.pessoaJuridicas = new ArrayList<PessoaJuridica>();
 	}
 
 	 public List<Estado> getEstados() {
@@ -64,6 +67,14 @@ public class MbPJuridica {
 		 return null;
  }
 
+	 public List<PessoaJuridica> getPessoaJuridicas() {
+		 EntityManager em = JPAUtil.getEntityManager();
+		 Query q = em.createQuery("select a from PessoaJuridica a",
+				 PessoaJuridica.class);
+		 this.pessoaJuridicas = q.getResultList();
+		 em.close();
+    	return pessoaJuridicas; 
+ }
 	
 	public void mensagemSucesso(ActionEvent event) {
 	    FacesContext instance = FacesContext.getCurrentInstance();
@@ -109,12 +120,18 @@ public class MbPJuridica {
 	}
 
 	public PJuridicaDao getpJuridicaDao() {
-		return pJuridicaDao;
+		return pessoaJuridicaDao;
 	}
 
 	public void setpJuridicaDao(PJuridicaDao pJuridicaDao) {
-		this.pJuridicaDao = pJuridicaDao;
+		this.pessoaJuridicaDao = pJuridicaDao;
 	}
+	
+	public String excluir() {
+		pessoaJuridicaDao.excluir(pessoaJuridica);
+		return null;
+	}
+
 
 	public String salvar(){
 		/*isso será trocado por cascade ;) */
@@ -124,7 +141,7 @@ public class MbPJuridica {
 		em.getTransaction().commit();
 		em.close();
 		
-		pJuridicaDao.salvar(pessoaJuridica);
+		pessoaJuridicaDao.salvar(pessoaJuridica);
 		return "pgpjuridica";
 	}
 }
