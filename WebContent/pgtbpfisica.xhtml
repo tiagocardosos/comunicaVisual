@@ -28,11 +28,11 @@
                 {NextPageLink} {LastPageLink}
                 {RowsPerPageDropdown}"
                 rowsPerPageTemplate="5,10,15"
-                style="width: 80%"
+                style="width: 95%"
                 lazy="true">                
 				<p:column>
 						<f:facet name="header">
-							Identificador
+							Id.:
 						</f:facet>
    			 			#{pessoas.id}
 				</p:column>
@@ -67,6 +67,27 @@
 				
 				<p:column>
 						<f:facet name="header">
+							Tel.:
+						</f:facet>
+   			 			#{pessoas.contato.telefoneOne}
+				</p:column>
+				
+								
+				<p:column>
+						<f:facet name="header">
+							Cel.:
+						</f:facet>
+   			 			#{pessoas.contato.telefoneTwo}
+				</p:column>
+				
+				<p:column>
+						<f:facet name="header">
+							E-Mail
+						</f:facet>
+   			 			#{pessoas.contato.email}
+				</p:column>
+				<p:column>
+						<f:facet name="header">
 							Endereço
 						</f:facet>
    			 			#{pessoas.endereco}
@@ -90,7 +111,7 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
-						<p:commandButton value="excluir"
+						<p:commandButton icon="ui-icon-close"
 								action="#{mbPessoaFisica.excluir}"
 							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.nome}  ?')) return false">
 							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPessoaFisica.pessoaFisica}"/>

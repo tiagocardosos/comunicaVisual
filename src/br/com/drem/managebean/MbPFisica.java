@@ -130,12 +130,12 @@ public class MbPFisica {
 
 	public String salvar(){
 		/*isso será trocado por cascade ;) */
-		EntityManager em = JPAUtil.getEntityManager();
+		/*EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 		em.persist(pessoaFisica.getContato());
 		em.getTransaction().commit();
 		em.close();
-		
+		*/
 		pessoaFisicaDao.salvar(pessoaFisica);
 		return "pgpfisica";
 	}
