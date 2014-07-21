@@ -76,9 +76,14 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
-						<p:commandButton value="excluir"
+						<p:commandButton icon="ui-icon-close"
 								action="#{mbProduto.excluir}"
 							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false">
+							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
+					</p:commandButton>
+					
+					<p:commandButton icon="ui-icon-arrowreturnthick-1-s">
+							
 							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
 					</p:commandButton>
 				</p:column>

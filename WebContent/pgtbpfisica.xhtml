@@ -116,6 +116,11 @@
 							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.nome}  ?')) return false">
 							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPessoaFisica.pessoaFisica}"/>
 					</p:commandButton>
+					
+					<p:commandButton icon="ui-icon-arrowreturnthick-1-s">
+							
+							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPessoaFisica.pessoaFisica}"/>
+					</p:commandButton>
 				</p:column>
 						
 				</p:dataTable>
