@@ -112,7 +112,7 @@
 						</f:facet>
 						<p:commandButton icon="ui-icon-close"
 								action="#{mbPJuridica.excluir}"
-							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.nome}  ?')) return false">
+							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.razaoSocial}  ?')) return false">
 							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPJuridica.pessoaJuridica}"/>
 					</p:commandButton>
 					
@@ -121,6 +121,7 @@
 							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPJuridica.pessoaJuridica}"/>
 					</p:commandButton>
 					
+					<p:commandButton icon="ui-icon-circle-plus" action="#{mbPJuridica.novo}" />
 				</p:column>
 						
 				</p:dataTable>

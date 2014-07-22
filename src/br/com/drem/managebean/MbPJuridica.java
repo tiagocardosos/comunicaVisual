@@ -142,6 +142,9 @@ public class MbPJuridica {
 		em.close();
 		
 		pessoaJuridicaDao.salvar(pessoaJuridica);
+		return "pgtbpjuridica";
+	}
+	public String novo() {
 		return "pgpjuridica";
 	}
 }

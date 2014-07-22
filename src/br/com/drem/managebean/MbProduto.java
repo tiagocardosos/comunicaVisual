@@ -66,6 +66,9 @@ public class MbProduto implements Serializable{
 	}
 	public String salvar(){
 		produtoDao.salvar(produto);
+		return "pgtbproduto";
+	}
+	public String novo(){
 		return "pgproduto";
 	}
 

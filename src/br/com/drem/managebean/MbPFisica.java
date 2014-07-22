@@ -137,6 +137,10 @@ public class MbPFisica {
 		em.close();
 		
 		pessoaFisicaDao.salvar(pessoaFisica);
+		return "pgtbpfisica";
+	}
+	
+	public String novo() {
 		return "pgpfisica";
 	}
 

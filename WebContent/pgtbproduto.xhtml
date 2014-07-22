@@ -28,46 +28,46 @@
                 {NextPageLink} {LastPageLink}
                 {RowsPerPageDropdown}"
                 rowsPerPageTemplate="5,10,15"
-                style="width: 80%"
+                style="width: 98%"
                 lazy="true">                
 				<p:column>
 						<f:facet name="header">
-							Identificador
+							Id.:
 						</f:facet>
    			 			#{produtos.idProduto}
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							Nome
+							Nome:
 						</f:facet>
    			 			#{produtos.nomeProduto}
 				</p:column>
 
 				<p:column>
 						<f:facet name="header">
-							Especificações
+							Esf.:
 						</f:facet>
    			 			#{produtos.especificacaoProduto}
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							Medida Horizontal
+							X.:
 						</f:facet>
    			 			#{produtos.medidaX}
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							Medida Vertical
+							Y.:
 						</f:facet>
    			 			#{produtos.medidaY}
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							Preço de Venda
+							R$ Venda
 						</f:facet>
    			 			#{produtos.precoDeMetroVenda}
 				</p:column>
@@ -76,16 +76,18 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
-						<p:commandButton icon="ui-icon-close"
+						<p:commandButton icon="ui-icon-close" title="Excluir um produto"
 								action="#{mbProduto.excluir}"
 							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false">
 							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
 					</p:commandButton>
 					
-					<p:commandButton icon="ui-icon-arrowreturnthick-1-s">
+					<p:commandButton icon="ui-icon-arrowreturnthick-1-s" title="Alterar um produto">
 							
 							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
 					</p:commandButton>
+					
+					<p:commandButton icon="ui-icon-circle-plus" title="Adicionar um produto" action="#{mbProduto.novo}"/>
 				</p:column>
 						
 				</p:dataTable>
