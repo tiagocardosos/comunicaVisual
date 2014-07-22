@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import org.primefaces.context.RequestContext;
 
 import br.com.drem.dao.ProdutoDao;
 import br.com.drem.entity.Cidade;
@@ -65,8 +68,14 @@ public class MbProduto implements Serializable{
 		return null;
 	}
 	public String salvar(){
-		produtoDao.salvar(produto);
-		return "pgtbproduto";
+		if(produto != null){
+			produtoDao.salvar(produto);
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de produtos", "inserido com sucesso.");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);
+		} else{
+			return "index";
+		}
+		return "pgtbproduto";	
 	}
 	public String novo(){
 		return "pgproduto";

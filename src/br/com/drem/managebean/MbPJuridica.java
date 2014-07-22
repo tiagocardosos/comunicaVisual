@@ -11,6 +11,8 @@ import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.primefaces.context.RequestContext;
+
 import br.com.drem.dao.PJuridicaDao;
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
@@ -134,14 +136,19 @@ public class MbPJuridica {
 
 
 	public String salvar(){
-		/*isso será trocado por cascade ;) */
-		EntityManager em = JPAUtil.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(pessoaJuridica.getContato());
-		em.getTransaction().commit();
-		em.close();
+		if(pessoaJuridica != null){
+			EntityManager em = JPAUtil.getEntityManager();
+			em.getTransaction().begin();
+			em.persist(pessoaJuridica.getContato());
+			em.getTransaction().commit();
+			em.close();
+			pessoaJuridicaDao.salvar(pessoaJuridica);
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de Pessoa Juridica", "inserido com sucesso.");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);
+		} else{
+			return null;
+		}
 		
-		pessoaJuridicaDao.salvar(pessoaJuridica);
 		return "pgtbpjuridica";
 	}
 	public String novo() {

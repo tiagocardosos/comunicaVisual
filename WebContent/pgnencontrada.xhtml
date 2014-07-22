@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <!-- 
 @autor: André Martins
 @contact: andremartins@outlook.com.br
@@ -18,7 +19,7 @@
     <h:form>
     	<ui:composition template="/templates/master.xhtml"> 
         <ui:define name="conteudo">
-            <h1>Um... não encontramos a sua pagina...</h1>  
+            <h1><p:outputLabel value="Um... não encontramos a sua pagina..."/></h1>  
             <h:graphicImage library="images" name="05.jpg" />
         </ui:define>  
     </ui:composition>

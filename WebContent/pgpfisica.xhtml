@@ -18,7 +18,8 @@
 	<ui:composition template="/templates/master.xhtml">
 		<ui:define name="conteudo">
 	<p:growl id="mensagens"/>
-    <h:outputText value="#{mensagens.mensagemSucesso}:"/>
+    <h:outputText value="#{mensagens.mensagemSucesso}"/>
+    <h1><p:outputLabel value="Pessoa Física"/></h1>
 		<h:panelGrid columns="4">
 			Cpf: <p:inputText value="#{mbPessoaFisica.pessoaFisica.cpf}" size="30"/>
 			

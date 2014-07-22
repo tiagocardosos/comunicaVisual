@@ -10,6 +10,8 @@ import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.primefaces.context.RequestContext;
+
 import br.com.drem.dao.PFisicaDao;
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
@@ -129,14 +131,18 @@ public class MbPFisica {
 	}
 
 	public String salvar(){
-		/*isso será trocado por cascade ;) */
+		if(pessoaFisica != null) {
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 		em.persist(pessoaFisica.getContato());
 		em.getTransaction().commit();
 		em.close();
-		
 		pessoaFisicaDao.salvar(pessoaFisica);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de Pessoa Fisica", "inserido com sucesso.");
+		RequestContext.getCurrentInstance().showMessageInDialog(message);
+		} else{
+			return null;
+		}
 		return "pgtbpfisica";
 	}
 	

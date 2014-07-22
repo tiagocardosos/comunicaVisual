@@ -18,6 +18,7 @@
 	<ui:composition template="/templates/master.xhtml">
 		<ui:define name="conteudo">
 			<p:growl id="mensagens" />
+			<h1><p:outputLabel value="Produtos"/></h1>
 			<h:panelGrid columns="2">
 			Nome do Produto: <p:inputText value="#{mbProduto.produto.nomeProduto}" size="50" 
 			maxlength="100" onkeyup="this.value = this.value.toUpperCase()"

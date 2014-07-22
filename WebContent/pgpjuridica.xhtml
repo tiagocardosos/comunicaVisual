@@ -18,7 +18,8 @@
 	<ui:composition template="/templates/master.xhtml">
 		<ui:define name="conteudo">
 	<p:growl id="mensagens"/>
-    <h:outputText value="#{mensagens.mensagemSucesso}:"/>
+    <h1><h:outputText value="#{mensagens.mensagemSucesso}"/></h1>
+    <h1><p:outputLabel value="Pessoa jurídica"/></h1>
 		<h:panelGrid columns="4">
 			Cnpj: <p:inputText value="#{mbPJuridica.pessoaJuridica.cnpj}" size="30"/>
 			
