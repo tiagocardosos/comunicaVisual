@@ -15,6 +15,7 @@ import org.primefaces.context.RequestContext;
 
 import br.com.drem.dao.PJuridicaDao;
 import br.com.drem.entity.Cidade;
+import br.com.drem.entity.Contato;
 import br.com.drem.entity.Estado;
 import br.com.drem.entity.PessoaFisica;
 import br.com.drem.entity.PessoaJuridica;
@@ -27,7 +28,6 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name="mbPJuridica")
-@ViewScoped
 public class MbPJuridica {
 	
 	private final String SUCESSO = "Operação realizada com sucesso";
@@ -39,12 +39,14 @@ public class MbPJuridica {
 	private PessoaJuridica pessoaJuridica;
 	private List<PessoaJuridica> pessoaJuridicas;
 	private PJuridicaDao pessoaJuridicaDao;
+	private Contato contato;
 	
 
 	public MbPJuridica(){
 		this.pessoaJuridica = new PessoaJuridica();
 		this.pessoaJuridicaDao = new PJuridicaDao();
 		this.pessoaJuridicas = new ArrayList<PessoaJuridica>();
+		this.contato = new Contato();
 	}
 
 	 public List<Estado> getEstados() {
@@ -129,29 +131,50 @@ public class MbPJuridica {
 		this.pessoaJuridicaDao = pJuridicaDao;
 	}
 	
+	public Contato getContato() {
+		if( contato==null ){
+			contato = new Contato();
+		}
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
 	public String excluir() {
 		pessoaJuridicaDao.excluir(pessoaJuridica);
+		contato = pessoaJuridica.getContato();
+		EntityManager em = JPAUtil.getEntityManager();
+		em.getTransaction().begin();
+		contato = em.find(Contato.class, contato.getIdContato());
+		em.remove(contato);
+		em.getTransaction().commit();
+		em.close();
 		return null;
 	}
 
 
 	public String salvar(){
-		if(pessoaJuridica != null){
+		if(pessoaJuridica.getId() == null || pessoaJuridica.getId() == 0){
 			EntityManager em = JPAUtil.getEntityManager();
 			em.getTransaction().begin();
 			em.persist(pessoaJuridica.getContato());
 			em.getTransaction().commit();
 			em.close();
 			pessoaJuridicaDao.salvar(pessoaJuridica);
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de Pessoa Juridica", "inserido com sucesso.");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
-		} else{
-			return null;
+			//FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de Pessoa Juridica", "inserido com sucesso.");
+			//RequestContext.getCurrentInstance().showMessageInDialog(message);
+		} else {
+			pessoaJuridicaDao.alterar(pessoaJuridica);
 		}
 		
 		return "pgtbpjuridica";
 	}
 	public String novo() {
+		return "pgpjuridica";
+	}
+	public String direcionarAlteracao(){
 		return "pgpjuridica";
 	}
 }

@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 
 import br.com.drem.entity.PessoaFisica;
 import br.com.drem.entity.PessoaJuridica;
+import br.com.drem.entity.Produto;
 import br.com.drem.util.JPAUtil;
 
 /**
@@ -29,11 +30,20 @@ public class PJuridicaDao {
 			pessoaJuridica = em.find(PessoaJuridica.class, pessoaJuridica.getId());
 			em.remove(pessoaJuridica);
 			em.getTransaction().commit();
-			em.close();
+			//em.close();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		
+	}
+	
+	/** alterar pessoa juridica */
+	public void alterar(PessoaJuridica pJuridica){
+		EntityManager em = JPAUtil.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(pJuridica);
+		em.getTransaction().commit();
+		em.close();
 	}
 	
 	/**Buscar pessoa por id*/

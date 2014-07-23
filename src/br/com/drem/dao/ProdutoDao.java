@@ -38,7 +38,6 @@ public class ProdutoDao {
 	public void alterar(Produto produto){
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
-		
 		em.merge(produto);
 		em.getTransaction().commit();
 		em.close();

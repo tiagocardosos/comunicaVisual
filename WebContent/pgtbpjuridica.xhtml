@@ -101,6 +101,14 @@
 				
 				<p:column>
 						<f:facet name="header">
+							Cid
+						</f:facet>
+   			 			#{pessoas.cidade.nome}
+				</p:column>
+				
+				
+				<p:column>
+						<f:facet name="header">
 							Obs.:
 						</f:facet>
    			 			#{pessoas.obs}
@@ -110,18 +118,18 @@
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
-						<p:commandButton icon="ui-icon-close"
+						<p:commandButton icon="ui-icon-close" title="excluir pessoa jurídica"
 								action="#{mbPJuridica.excluir}"
 							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.razaoSocial}  ?')) return false">
 							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPJuridica.pessoaJuridica}"/>
 					</p:commandButton>
 					
-						<p:commandButton icon="ui-icon-arrowreturnthick-1-s">
-							
+					<p:commandButton icon="ui-icon-arrowreturnthick-1-s" title="Alterar pessoa jurídica"
+							action="#{mbPJuridica.direcionarAlteracao}" >
 							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPJuridica.pessoaJuridica}"/>
 					</p:commandButton>
 					
-					<p:commandButton icon="ui-icon-circle-plus" action="#{mbPJuridica.novo}" />
+					<p:commandButton icon="ui-icon-circle-plus" action="#{mbPJuridica.novo}" title="Nova pessoa jurídica"/>
 				</p:column>
 						
 				</p:dataTable>

@@ -83,9 +83,4 @@ public class MbProduto implements Serializable{
 	public String direcionarAlteracao(){
 		return "pgproduto";
 	}
-	public String cancelar(){
-		return "index";
-	}
-
-
 }
