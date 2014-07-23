@@ -1,6 +1,10 @@
 Comunica Visual
 ==============
 
+Implementação de alterar um produto selecionado
+
+Implementação de cancelar na tela de cadastrar um produto
+
 Implementação de tabela de produtos com campo ações com botão para excluir
 
 Implementação de primeiras telas de cadastro de pessoa fisica, pessoa juridica e produto

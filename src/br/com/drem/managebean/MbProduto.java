@@ -14,7 +14,6 @@ import javax.persistence.Query;
 import org.primefaces.context.RequestContext;
 
 import br.com.drem.dao.ProdutoDao;
-import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Produto;
 import br.com.drem.util.JPAUtil;
 
@@ -25,7 +24,6 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name="mbProduto")
-@ViewScoped
 public class MbProduto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Produto produto;
@@ -68,17 +66,25 @@ public class MbProduto implements Serializable{
 		return null;
 	}
 	public String salvar(){
-		if(produto != null){
+		if(produto.getIdProduto() == null || produto.getIdProduto() == 0 ){
 			produtoDao.salvar(produto);
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de produtos", "inserido com sucesso.");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
-		} else{
-			return "index";
+			//FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de produtos", "inserido com sucesso.");
+			//RequestContext.getCurrentInstance().showMessageInDialog(message);
+		} else {
+			produtoDao.alterar(produto);
+			//FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alteração de produtos", "Alterado com sucesso.");
+			//RequestContext.getCurrentInstance().showMessageInDialog(message);
 		}
 		return "pgtbproduto";	
 	}
 	public String novo(){
 		return "pgproduto";
+	}
+	public String direcionarAlteracao(){
+		return "pgproduto";
+	}
+	public String cancelar(){
+		return "index";
 	}
 
 

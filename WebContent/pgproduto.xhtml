@@ -30,7 +30,11 @@
 			Medida Horizontal: <p:inputText value="#{mbProduto.produto.medidaX}" size="10" maxlength="8" />  
 			Medida Vertical: <p:inputText value="#{mbProduto.produto.medidaY}" size="10" maxlength="8" />                                
 			Preço de Venda: <p:inputText value="#{mbProduto.produto.precoDeMetroVenda}" size="10" maxlength="8" />
-			<p:commandButton action="#{mbProduto.salvar}" update="@form" icon="ui-icon-circle-check" />
+			<h:inputHidden value="#{mbProduto.produto.idProduto}"/>
+			<p:growl>
+				<p:commandButton action="#{mbProduto.salvar}" update="@form" icon="ui-icon-circle-check" />
+				<p:commandButton action="#{mbProduto.cancelar}" icon="ui-icon-cancel" immediate="true" />
+			</p:growl>
 			</h:panelGrid>
 		</ui:define>
 	</ui:composition>
