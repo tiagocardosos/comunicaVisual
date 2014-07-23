@@ -46,4 +46,7 @@ public class MbPagina {
 	public String pgTbPJuridica(){
 		return PG_TB_PF + "?faces-redirect=true";
 	}
+	public String cancelar(){
+		return "index";
+	}
 }
