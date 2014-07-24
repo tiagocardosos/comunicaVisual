@@ -19,15 +19,7 @@
         <ui:define name="conteudo">
         
       <h2><p:outputLabel value=" Filtro e ações para produtos"/></h2>
-     <ui:remove> <p:growl>
-      Filtro: <p:inputText value="#{mbProduto.produto.nomeProduto}"/>
-      
-    	<p:commandButton icon="ui-icon-search" title="Filtrar"
-    					action="#{mbProduto.filtroPersonalizado}">
-    	</p:commandButton>
-      </p:growl>
-      </ui:remove>
-        <p:dataTable value="#{mbProduto.produtos}" 
+        <p:dataTable value="#{mbProduto.produto}" 
 				var="produtos"
                 paginator="true"
                 rows="10"
@@ -38,12 +30,12 @@
                 {RowsPerPageDropdown}"
                 rowsPerPageTemplate="5,10,15"
                 style="width: 98%"
-                lazy="true">               
+                lazy="true">                
 				<p:column>
 						<f:facet name="header">
 							Cod.:
 						</f:facet>
-   			 			<p:outputLabel value="#{produtos.idProduto}"/>
+   			 			#{produtos.idProduto}
 				</p:column>
 				
 				<p:column>
