@@ -15,20 +15,12 @@
 	<h:outputStylesheet library="css" name="estilo.css"/>
 </h:head>
 <h:body>
-<h:form id="formTbProduto">
+<h:form>
     	<ui:composition template="/templates/master.xhtml"> 
         <ui:define name="conteudo">
         
       <h2><p:outputLabel value=" Filtro e ações para produtos"/></h2>
-	<p:growl>
-     <p:outputLabel value="Filtro:"/>
-     <p:inputText value="#{mbProduto.produto.nomeProduto}"/>
-      
-    	<p:commandButton icon="ui-icon-search" title="Filtrar"
-    					action="#{mbProduto.filtroPersonalizado}">
-    	</p:commandButton>
-      </p:growl>
-        <p:dataTable id="tableProduto" value="#{mbProduto.produtos}" 
+        <p:dataTable id="tableProduto" value="#{mbProduto.resultado}" 
 				var="produtos"
                 paginator="true"
                 rows="10"
@@ -81,7 +73,6 @@
 						</f:facet>
    			 			<p:outputLabel value="#{produtos.precoDeMetroVenda}"/>
 				</p:column>
-				<ui:remove>
 				<p:column>
 						<f:facet name="header">
 							<h:outputText value="Ações" />
@@ -94,12 +85,11 @@
 					
 					<p:commandButton icon="ui-icon-arrowreturnthick-1-s" title="Alterar um produto"
 									 action="#{mbProduto.direcionarAlteracao}">
-						<f:setPropertyActionListener  value="#{produtos}" target="#{mbProduto.produto}"/>
+						
 					</p:commandButton>
 					
 					<p:commandButton icon="ui-icon-circle-plus" title="Adicionar um produto" action="#{mbProduto.novo}"/>
-				</p:column>
-				</ui:remove>	
+				</p:column>	
 				</p:dataTable>
             
         </ui:define>  

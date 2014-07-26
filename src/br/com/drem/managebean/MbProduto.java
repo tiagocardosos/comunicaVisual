@@ -26,20 +26,19 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name="mbProduto")
+@SessionScoped
 public class MbProduto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Produto produto;
 	private ProdutoDao produtoDao;
 	private List<Produto>produtos;
 	private List<Produto> resultado;
-	private List<Produto>filtroPersonalizado;
 	
 	public MbProduto(){
 		this.produto = new Produto();
 		this.produtoDao = new ProdutoDao();
 		this.produtos = new ArrayList<Produto>();
 		this.resultado = new ArrayList<Produto>();
-		this.filtroPersonalizado = new ArrayList<Produto>();
 	}
 	
 	public void setProdutos(List<Produto> produtos) {
@@ -69,11 +68,6 @@ public class MbProduto implements Serializable{
 
 	public void setProdutoDao(ProdutoDao produtoDao) {
 		this.produtoDao = produtoDao;
-	}
-
-	
-	public void setFiltroPersonalizado(List<Produto> filtroPersonalizado) {
-		this.filtroPersonalizado = filtroPersonalizado;
 	}
 
 	public String excluir() {
@@ -106,17 +100,13 @@ public class MbProduto implements Serializable{
 		em.close();
 		return produtos;
 	}
-	public List<Produto> getFiltroPersonalizado() {
-		if(filtroPersonalizado == null){
-			filtroPersonalizado = new ArrayList<Produto>();
-		}
-
+	public String filtroPersonalizado() {
+		 resultado = new ArrayList<Produto>();
 		 EntityManager em = JPAUtil.getEntityManager();
 		 String consulta = "select p from Produto p where p.nomeProduto = :nome";
 		 TypedQuery<Produto> query = em.createQuery(consulta, Produto.class);
 		 query.setParameter("nome", produto.getNomeProduto());
-		 this.filtroPersonalizado = query.getResultList();
-		 System.out.println(filtroPersonalizado.get(0).getNomeProduto());
-		 return filtroPersonalizado;
+		 this.resultado = query.getResultList();
+		 return "pgtbprodutoselect";
 	}
 }
