@@ -166,6 +166,11 @@ public class MbPJuridica {
 			//FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de Pessoa Juridica", "inserido com sucesso.");
 			//RequestContext.getCurrentInstance().showMessageInDialog(message);
 		} else {
+			EntityManager em = JPAUtil.getEntityManager();
+			em.getTransaction().begin();
+			em.merge(pessoaJuridica.getContato());
+			em.getTransaction().commit();
+			em.close();
 			pessoaJuridicaDao.alterar(pessoaJuridica);
 		}
 		
