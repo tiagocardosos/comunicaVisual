@@ -21,7 +21,8 @@
         
       <h2><p:outputLabel value=" Filtro e ações para produtos"/></h2>
      <ui:remove> <p:growl>
-      Filtro: <p:inputText value="#{mbProduto.produto.nomeProduto}"/>
+     <p:outputLabel value="Filtro:"/>
+     <p:inputText value="#{mbProduto.produto.nomeProduto}"/>
       
     	<p:commandButton icon="ui-icon-search" title="Filtrar"
     					action="#{mbProduto.filtroPersonalizado}">
@@ -42,44 +43,44 @@
                 lazy="true">               
 				<p:column>
 						<f:facet name="header">
-							Cod.:
+							<h:outputText value="Cod.:" />
 						</f:facet>
    			 			<p:outputLabel value="#{produtos.idProduto}"/>
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							Nome:
+							<h:outputText value ="Nome:"/>
 						</f:facet>
-   			 			#{produtos.nomeProduto}
+   			 			<p:outputLabel value="#{produtos.nomeProduto}"/>
 				</p:column>
 
 				<p:column>
 						<f:facet name="header">
-							Esf.:
+							<h:outputText value ="Esf.:"/>
 						</f:facet>
-   			 			#{produtos.especificacaoProduto}
+   			 			<p:outputLabel value="#{produtos.especificacaoProduto}"/>
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							X.:
+							<h:outputText value ="X.:"/>
 						</f:facet>
-   			 			#{produtos.medidaX}
+   			 			<p:outputLabel value="#{produtos.medidaX}"/>
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							Y.:
+							<h:outputText value ="Y.:"/>
 						</f:facet>
-   			 			#{produtos.medidaY}
+   			 			<p:outputLabel value="#{produtos.medidaY}"/>
 				</p:column>
 				
 				<p:column>
 						<f:facet name="header">
-							R$ Venda
+							<h:outputText value ="R$ Venda"/>
 						</f:facet>
-   			 			#{produtos.precoDeMetroVenda}
+   			 			<p:outputLabel value="#{produtos.precoDeMetroVenda}"/>
 				</p:column>
 				<p:column>
 						<f:facet name="header">

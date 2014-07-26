@@ -31,86 +31,86 @@
 					rowsPerPageTemplate="5,10,15" style="width: 100%" lazy="true">
 					<p:column>
 						<f:facet name="header">
-							Id.:
+							<h:outputText value ="Id.:"/>
 						</f:facet>
-   			 			#{pessoas.id}
+						<p:outputLabel value="#{pessoas.id}"/>
 				</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							Nome
+							<h:outputText value ="Nome"/>
 						</f:facet>
-   			 			#{pessoas.razaoSocial}
+						<p:outputLabel value="#{pessoas.razaoSocial}"/>
 				</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							CNPJ
+							<h:outputText value ="CNPJ"/>
 						</f:facet>
-   			 			#{pessoas.cnpj}
+						<p:outputLabel value="#{pessoas.cnpj}"/>
 				</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							Matricula
+							<h:outputText value ="Matricula"/>
 						</f:facet>
-   			 			#{pessoas.matricula}
+						<p:outputLabel value="#{pessoas.matricula}"/>
 				</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							Endereço
+							<h:outputText value ="Endereço"/>
 						</f:facet>
-   			 			#{pessoas.endereco}
+						<p:outputLabel value="#{pessoas.endereco}"/>
 				</p:column>
 					<p:column>
 						<f:facet name="header">
-							Tel.:
+							<h:outputText value ="Tel.:"/>
 						</f:facet>
-   			 			#{pessoas.contato.telefoneOne}
-				</p:column>
-
-
-					<p:column>
-						<f:facet name="header">
-							Cel.:
-						</f:facet>
-   			 			#{pessoas.contato.telefoneTwo}
-				</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							E-Mail
-						</f:facet>
-   			 			#{pessoas.contato.email}
-				</p:column>
-					<p:column>
-						<f:facet name="header">
-							IE
-						</f:facet>
-   			 			#{pessoas.inscricaoEstadual}
-				</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							CEP
-						</f:facet>
-   			 			#{pessoas.cep}
-				</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							Cid
-						</f:facet>
-   			 			#{pessoas.cidade.nome}
+						<p:outputLabel value="#{pessoas.contato.telefoneOne}"/>
 				</p:column>
 
 
 					<p:column>
 						<f:facet name="header">
-							Obs.:
+							<h:outputText value ="Cel.:"/>
 						</f:facet>
-   			 			#{pessoas.obs}
+						<p:outputLabel value="#{pessoas.contato.telefoneTwo}"/>
+				</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value ="E-Mail"/>
+						</f:facet>
+						<p:outputLabel value="#{pessoas.contato.email}"/>
+				</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value ="IE"/>
+						</f:facet>
+						<p:outputLabel value="#{pessoas.inscricaoEstadual}"/>
+				</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value ="CEP"/>
+						</f:facet>
+						<p:outputLabel value="#{pessoas.cep}"/>
+				</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value ="Cid.:"/>
+						</f:facet>
+						<p:outputLabel value="#{pessoas.cidade.nome}"/>
+				</p:column>
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value ="Obs.:"/>
+						</f:facet>
+						<p:outputLabel value="#{pessoas.obs}"/>
 				</p:column>
 
 					<p:column>

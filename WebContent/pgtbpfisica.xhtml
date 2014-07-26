@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <!-- 
 @autor: André Martins
 @contact: andremartins@outlook.com.br
@@ -12,125 +12,127 @@
  -->
 <h:head>
 	<title><ui:insert name="title">Modelo de Página</ui:insert></title>
-	<h:outputStylesheet library="css" name="estilo.css"/>
+	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <h:body>
-<h:form id="formTbPfisica">
-    	<ui:composition template="/templates/master.xhtml"> 
-        <ui:define name="conteudo">
-        <h2><p:outputLabel value="Filtro e ações para pessoa física"/></h2>
-         <p:dataTable value="#{mbPessoaFisica.pessoaFisicas}" 
-				var="pessoas"
-                paginator="true"
-                rows="10"
-                paginatorTemplate="{CurrentPageReport}
+	<h:form id="formTbPfisica">
+		<ui:composition template="/templates/master.xhtml">
+			<ui:define name="conteudo">
+				<h2>
+					<p:outputLabel value="Filtro e ações para pessoa física" />
+				</h2>
+				<p:dataTable value="#{mbPessoaFisica.pessoaFisicas}" var="pessoas"
+					paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}
                 {FirstPageLink}
                 {PreviousPageLink} {PageLinks}
                 {NextPageLink} {LastPageLink}
                 {RowsPerPageDropdown}"
-                rowsPerPageTemplate="5,10,15"
-                style="width: 95%"
-                lazy="true">                
-				<p:column>
+					rowsPerPageTemplate="5,10,15" style="width: 95%" lazy="true">
+					<p:column>
 						<f:facet name="header">
-							Id.:
+							<h:outputText value="Cod.:" />
 						</f:facet>
-   			 			#{pessoas.id}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.id}" />
+
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							Nome
+							<h:outputText value="Nome" />
 						</f:facet>
-   			 			#{pessoas.nome}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.nome}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							CPF
+							<h:outputText value="CPF" />
 						</f:facet>
-   			 			#{pessoas.cpf}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.cpf}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							Matricula
+							<h:outputText value="Matricula" />
 						</f:facet>
-   			 			#{pessoas.matricula}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.matricula}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							RG
+							<h:outputText value="RG" />
 						</f:facet>
-   			 			#{pessoas.rg}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.rg}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							Tel.:
+							<h:outputText value="Tel.:" />
 						</f:facet>
-   			 			#{pessoas.contato.telefoneOne}
-				</p:column>
-				
-								
-				<p:column>
+						<p:outputLabel value="#{pessoas.contato.telefoneOne}" />
+					</p:column>
+
+
+					<p:column>
 						<f:facet name="header">
-							Cel.:
+							<h:outputText value="Cel.:" />
 						</f:facet>
-   			 			#{pessoas.contato.telefoneTwo}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.contato.telefoneTwo}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							E-Mail
+							<h:outputText value="E-Mail" />
 						</f:facet>
-   			 			#{pessoas.contato.email}
-				</p:column>
-				<p:column>
+						<p:outputLabel value="#{pessoas.contato.email}" />
+					</p:column>
+					<p:column>
 						<f:facet name="header">
-							Endereço
+							<h:outputText value="Endereço" />
 						</f:facet>
-   			 			#{pessoas.endereco}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.endereco}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							CEP
+							<h:outputText value="CEP" />
 						</f:facet>
-   			 			#{pessoas.cep}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.cep}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
-							Obs.:
+							<h:outputText value="Obs.:" />
 						</f:facet>
-   			 			#{pessoas.obs}
-				</p:column>
-				
-				<p:column>
+						<p:outputLabel value="#{pessoas.obs}" />
+					</p:column>
+
+					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Ações" />
 						</f:facet>
 						<p:commandButton icon="ui-icon-close"
-								action="#{mbPessoaFisica.excluir}"
-							id="pessoas" ajax="false" onclick="if(!confirm('Deseja excluir #{pessoas.nome}  ?')) return false">
-							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPessoaFisica.pessoaFisica}"/>
-					</p:commandButton>
-					
-					<p:commandButton icon="ui-icon-arrowreturnthick-1-s">
-							
-							<f:setPropertyActionListener value="#{pessoas}" target="#{mbPessoaFisica.pessoaFisica}"/>
-					</p:commandButton>
-					
-					<p:commandButton icon="ui-icon-circle-plus" action="#{mbPessoaFisica.novo}" />
-					
-				</p:column>
-						
+							action="#{mbPessoaFisica.excluir}" id="pessoas" ajax="false"
+							onclick="if(!confirm('Deseja excluir #{pessoas.nome}  ?')) return false">
+							<f:setPropertyActionListener value="#{pessoas}"
+								target="#{mbPessoaFisica.pessoaFisica}" />
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-arrowreturnthick-1-s">
+
+							<f:setPropertyActionListener value="#{pessoas}"
+								target="#{mbPessoaFisica.pessoaFisica}" />
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-circle-plus"
+							action="#{mbPessoaFisica.novo}" />
+
+					</p:column>
+
 				</p:dataTable>
-            
-        </ui:define>  
-    </ui:composition>
-</h:form>
+
+			</ui:define>
+		</ui:composition>
+	</h:form>
 </h:body>
 </html>
