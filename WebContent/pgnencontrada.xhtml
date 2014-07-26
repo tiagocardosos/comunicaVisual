@@ -16,11 +16,11 @@
 	<h:outputStylesheet library="css" name="estilo.css"/>
 </h:head>
 <h:body>
-    <h:form>
+    <h:form id="formPgNEncontrada">
     	<ui:composition template="/templates/master.xhtml"> 
         <ui:define name="conteudo">
             <h1><p:outputLabel value="Um... não encontramos a sua pagina..."/></h1>  
-            <h:graphicImage library="images" name="05.jpg" />
+            <ui:remove><h:graphicImage library="images" name="05.jpg" /></ui:remove>
         </ui:define>  
     </ui:composition>
     </h:form>

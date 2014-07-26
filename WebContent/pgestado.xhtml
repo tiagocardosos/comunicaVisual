@@ -15,8 +15,10 @@
 	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <h:body>
+<h:form id="formPgEstado">
 	<ui:composition template="/templates/master.xhtml">
 		<ui:define name="conteudo">
+		
 			Estado:
 			<h:selectOneMenu value="#{mbEstado.pessoa.cidade.estado.idEstado}">
 				<f:selectItem itemLabel="-- Estado --" noSelectionOption="true" />
@@ -32,5 +34,6 @@
 			</h:selectOneMenu>	
 		</ui:define>
 	</ui:composition>
+</h:form>
 </h:body>
 </html>

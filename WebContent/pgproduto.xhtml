@@ -15,6 +15,7 @@
 	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <h:body>
+<h:form id="formPgProduto">
 	<ui:composition template="/templates/master.xhtml">
 		<ui:define name="conteudo">
 			<p:growl id="mensagens" />
@@ -38,5 +39,6 @@
 			</h:panelGrid>
 		</ui:define>
 	</ui:composition>
+</h:form>
 </h:body>
 </html>
