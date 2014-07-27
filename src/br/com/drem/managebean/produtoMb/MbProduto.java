@@ -1,20 +1,12 @@
-package br.com.drem.managebean;
+package br.com.drem.managebean.produtoMb;
 
 import java.io.Serializable;
-import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
-import org.primefaces.context.RequestContext;
-
 import br.com.drem.dao.ProdutoDao;
 import br.com.drem.entity.Produto;
 import br.com.drem.util.JPAUtil;
@@ -26,7 +18,6 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name = "mbProduto")
-@SessionScoped
 public class MbProduto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Produto produto;

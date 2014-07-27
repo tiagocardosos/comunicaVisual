@@ -1,4 +1,4 @@
-package br.com.drem.managebean;
+package br.com.drem.managebean.pessoaMb;
 /**
  * @author AndreMart
  * @contacts: andremartins@outlook.com.br;andre.drem@gmail.com

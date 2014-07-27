@@ -1,4 +1,4 @@
-package br.com.drem.managebean;
+package br.com.drem.managebean.uniaoMb;
 
 /**
  * @author AndreMart

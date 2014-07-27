@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.drem.entity.Cidade;
 import br.com.drem.entity.Estado;
-import br.com.drem.managebean.MbEstado;
+import br.com.drem.managebean.uniaoMb.MbEstado;
 import br.com.drem.util.JPAUtil;
 
 /**

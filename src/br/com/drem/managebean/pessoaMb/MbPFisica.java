@@ -1,4 +1,4 @@
-package br.com.drem.managebean;
+package br.com.drem.managebean.pessoaMb;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,5 +1,8 @@
 Comunica Visual
 ==============
+melhor definição de pacotes
+
+Implementação de filtro de produtos
 
 Implementação de alterar um produto selecionado
 
