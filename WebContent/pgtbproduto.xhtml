@@ -20,15 +20,16 @@
         <ui:define name="conteudo">
         
       <h2><p:outputLabel value=" Filtro e ações para produtos"/></h2>
-	<p:growl>
+      <h:panelGrid columns="4">
      <p:outputLabel value="Filtro:"/>
-     <p:inputText value="#{mbProduto.produto.nomeProduto}"/>
+     <p:inputText value="#{mbProduto.produto.nomeProduto}"
+     			  size="50" maxlength="150" onkeyup="this.value = this.value.toUpperCase()"/>
       
     	<p:commandButton icon="ui-icon-search" title="Filtrar"
-    					action="#{mbProduto.filtroPersonalizado}">
+    					action="#{mbProduto.filtroPersonalizado}" onclick="tableProduto.show()">
     	</p:commandButton>
-      </p:growl>
-        <p:dataTable id="tableProduto" value="#{mbProduto.produtos}" 
+      </h:panelGrid>
+        <p:dataTable id="tableProduto" value="#{mbProduto.resultado}"
 				var="produtos"
                 paginator="true"
                 rows="10"
@@ -81,7 +82,7 @@
 						</f:facet>
    			 			<p:outputLabel value="#{produtos.precoDeMetroVenda}"/>
 				</p:column>
-				<ui:remove>
+				
 				<p:column>
 						<f:facet name="header">
 							<h:outputText value="Ações" />
@@ -99,7 +100,7 @@
 					
 					<p:commandButton icon="ui-icon-circle-plus" title="Adicionar um produto" action="#{mbProduto.novo}"/>
 				</p:column>
-				</ui:remove>	
+					
 				</p:dataTable>
             
         </ui:define>  
