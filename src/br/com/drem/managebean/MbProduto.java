@@ -26,6 +26,7 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name = "mbProduto")
+@SessionScoped
 public class MbProduto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Produto produto;
@@ -33,8 +34,8 @@ public class MbProduto implements Serializable {
 	private List<Produto> resultado;
 
 	public MbProduto() {
-		this.produto = new Produto();
 		this.produtoDao = new ProdutoDao();
+		this.produto = new Produto();
 	}
 
 	public void setResultado(List<Produto> resultado) {
@@ -42,9 +43,6 @@ public class MbProduto implements Serializable {
 	}
 
 	public Produto getProduto() {
-		if (produto == null) {
-			produto = new Produto();
-		}
 		return produto;
 	}
 
@@ -74,6 +72,7 @@ public class MbProduto implements Serializable {
 			// RequestContext.getCurrentInstance().showMessageInDialog(message);
 		} else {
 			produtoDao.alterar(produto);
+			limpeProduto();
 			// FacesMessage message = new
 			// FacesMessage(FacesMessage.SEVERITY_INFO, "Alteração de produtos",
 			// "Alterado com sucesso.");
@@ -83,6 +82,7 @@ public class MbProduto implements Serializable {
 	}
 
 	public String novo() {
+		limpeProduto();
 		return "pgproduto";
 	}
 
@@ -92,6 +92,7 @@ public class MbProduto implements Serializable {
 
 	public List<Produto> getResultado() {
 		if(resultado == null){
+			limpeProduto();
 			resultado = new ArrayList<Produto>();
 			EntityManager em = JPAUtil.getEntityManager();
 			Query q = em.createQuery("select a from Produto a", Produto.class);
@@ -102,7 +103,6 @@ public class MbProduto implements Serializable {
 	}
 
 	public List<Produto> filtroPersonalizado() {
-		resultado = new ArrayList<Produto>();
 		EntityManager em = JPAUtil.getEntityManager();
 		String consulta = "select p from Produto p where p.nomeProduto = :nome";
 		TypedQuery<Produto> query = em.createQuery(consulta, Produto.class);
@@ -110,5 +110,8 @@ public class MbProduto implements Serializable {
 		this.resultado = query.getResultList();
 		em.close();
 		return resultado;
+	}
+	void limpeProduto(){
+		produto = new Produto();
 	}
 }
