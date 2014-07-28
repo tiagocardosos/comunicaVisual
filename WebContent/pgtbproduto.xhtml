@@ -88,14 +88,14 @@
 							<h:outputText value="Ações" />
 						</f:facet>
 						<p:commandButton icon="ui-icon-close" title="Excluir um produto"
-								action="#{mbProduto.excluir}"
+								action="#{mbExcluirProduto.excluir}"
 							id="produtos" ajax="false" onclick="if(!confirm('Deseja excluir #{produtos.nomeProduto}  ?')) return false">
-							<f:setPropertyActionListener value="#{produtos}" target="#{mbProduto.produto}"/>
+							<f:setPropertyActionListener value="#{produtos}" target="#{mbExcluirProduto.produto}"/>
 					</p:commandButton>
 					
 					<p:commandButton icon="ui-icon-arrowreturnthick-1-s" title="Alterar um produto"
 									 action="#{mbProduto.direcionarAlteracao}">
-						<f:setPropertyActionListener  value="#{produtos}" target="#{mbProduto.produto}"/>
+						<f:setPropertyActionListener  value="#{produtos}" target="#{mbInserirProduto.produto}"/>
 					</p:commandButton>
 					
 					<p:commandButton icon="ui-icon-circle-plus" title="Adicionar um produto" action="#{mbProduto.novo}"/>

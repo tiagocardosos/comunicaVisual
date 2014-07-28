@@ -21,19 +21,19 @@
 			<p:growl id="mensagens" />
 			<h1><p:outputLabel value="Produtos"/></h1>
 			<h:panelGrid columns="2">
-			Nome do Produto: <p:inputText value="#{mbProduto.produto.nomeProduto}" size="50" 
+			Nome do Produto: <p:inputText value="#{mbInserirProduto.produto.nomeProduto}" size="50" 
 			maxlength="100" onkeyup="this.value = this.value.toUpperCase()"
 					required="true" requiredMessage="O campo [Nome] é obrigatório."/>
 			
-			Descrição<p:inputText value="#{mbProduto.produto.especificacaoProduto}" size="50"
+			Descrição<p:inputText value="#{mbInserirProduto.produto.especificacaoProduto}" size="50"
 					maxlength="254" onkeyup="this.value = this.value.toUpperCase()"
 					required="true" requiredMessage="O campo [Descrição] é obrigatório." />
-			Medida Horizontal: <p:inputText value="#{mbProduto.produto.medidaX}" size="10" maxlength="8" />  
-			Medida Vertical: <p:inputText value="#{mbProduto.produto.medidaY}" size="10" maxlength="8" />                                
-			Preço de Venda: <p:inputText value="#{mbProduto.produto.precoDeMetroVenda}" size="10" maxlength="8" />
-			<h:inputHidden value="#{mbProduto.produto.idProduto}"/>
+			Medida Horizontal: <p:inputText value="#{mbInserirProduto.produto.medidaX}" size="10" maxlength="8" />  
+			Medida Vertical: <p:inputText value="#{mbInserirProduto.produto.medidaY}" size="10" maxlength="8" />                                
+			Preço de Venda: <p:inputText value="#{mbInserirProduto.produto.precoDeMetroVenda}" size="10" maxlength="8" />
+			<h:inputHidden value="#{mbInserirProduto.produto.idProduto}"/>
 			<p:growl>
-				<p:commandButton action="#{mbProduto.salvar}" update="@form" icon="ui-icon-circle-check" />
+				<p:commandButton action="#{mbInserirProduto.salvar}" update="@form" icon="ui-icon-circle-check" />
 				<p:commandButton action="#{mbPagina.cancelar}" icon="ui-icon-cancel" immediate="true" />
 			</p:growl>
 			</h:panelGrid>

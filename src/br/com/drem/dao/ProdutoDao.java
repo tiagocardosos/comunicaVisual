@@ -13,7 +13,7 @@ import br.com.drem.util.JPAUtil;
 public class ProdutoDao {
 
 	/** Salvar produto */
-	public void salvar(Produto produto) {
+	public static void salvar(Produto produto) {
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 		em.persist(produto);
@@ -22,7 +22,7 @@ public class ProdutoDao {
 	}
 
 	/** excluir produto */
-	public void excluir(Produto produto) {
+	public static void excluir(Produto produto) {
 		try {
 			EntityManager em = JPAUtil.getEntityManager();
 			em.getTransaction().begin();
@@ -35,7 +35,7 @@ public class ProdutoDao {
 		}
 	}
 	/** alterar produto */
-	public void alterar(Produto produto){
+	public static void alterar(Produto produto){
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 		em.merge(produto);

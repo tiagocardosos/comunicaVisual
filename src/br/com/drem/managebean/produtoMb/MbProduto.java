@@ -3,12 +3,16 @@ package br.com.drem.managebean.produtoMb;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import br.com.drem.dao.ProdutoDao;
 import br.com.drem.entity.Produto;
+import br.com.drem.managebean.produtoMb.rn.RegraNegocioProduto;
 import br.com.drem.util.JPAUtil;
 
 /**
@@ -18,6 +22,7 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name = "mbProduto")
+@RequestScoped
 public class MbProduto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Produto produto;
@@ -50,30 +55,16 @@ public class MbProduto implements Serializable {
 	}
 
 	public String excluir() {
-		produtoDao.excluir(produto);
-		return null;
+		RegraNegocioProduto.excluir(produto);
+		return "pgtbproduto";
 	}
-
 	public String salvar() {
-		if (produto.getIdProduto() == null || produto.getIdProduto() == 0) {
-			produtoDao.salvar(produto);
-			// FacesMessage message = new
-			// FacesMessage(FacesMessage.SEVERITY_INFO, "Inserção de produtos",
-			// "inserido com sucesso.");
-			// RequestContext.getCurrentInstance().showMessageInDialog(message);
-		} else {
-			produtoDao.alterar(produto);
-			limpeProduto();
-			// FacesMessage message = new
-			// FacesMessage(FacesMessage.SEVERITY_INFO, "Alteração de produtos",
-			// "Alterado com sucesso.");
-			// RequestContext.getCurrentInstance().showMessageInDialog(message);
-		}
+		RegraNegocioProduto.salvar(produto);
 		return "pgtbproduto";
 	}
 
 	public String novo() {
-		limpeProduto();
+		RegraNegocioProduto.limpProduto();
 		return "pgproduto";
 	}
 
@@ -83,7 +74,6 @@ public class MbProduto implements Serializable {
 
 	public List<Produto> getResultado() {
 		if(resultado == null){
-			limpeProduto();
 			resultado = new ArrayList<Produto>();
 			EntityManager em = JPAUtil.getEntityManager();
 			Query q = em.createQuery("select a from Produto a", Produto.class);
@@ -101,8 +91,5 @@ public class MbProduto implements Serializable {
 		this.resultado = query.getResultList();
 		em.close();
 		return resultado;
-	}
-	void limpeProduto(){
-		produto = new Produto();
 	}
 }

@@ -1,6 +1,7 @@
 Comunica Visual
 ==============
-melhor definição de pacotes
+
+melhor definição de pacotes para melhor aproveitamento de escopo e memoria
 
 Implementação de filtro de produtos
 
