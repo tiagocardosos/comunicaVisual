@@ -3,6 +3,9 @@ package br.com.drem.managebean.produtoMb;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import org.infinispan.factories.annotations.Inject;
 
 import br.com.drem.entity.Produto;
 import br.com.drem.managebean.produtoMb.rn.RegraNegocioProduto;
@@ -35,8 +38,11 @@ public class MbInserirProduto implements Serializable{
 	
 	public String salvar(){
 		RegraNegocioProduto.salvar(produto);
-		return"pgtbproduto";
+		return"pgtbproduto" + "?faces-redirect=true";
 	}
 	
+	public String direcionarAlteracao() {
+		return "pgproduto";
+	}
 
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.drem.managebean.produtoMb;
 
 import java.io.Serializable;

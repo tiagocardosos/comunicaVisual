@@ -26,7 +26,7 @@
      			  size="50" maxlength="150" onkeyup="this.value = this.value.toUpperCase()"/>
       
     	<p:commandButton icon="ui-icon-search" title="Filtrar"
-    					action="#{mbProduto.filtroPersonalizado}" onclick="tableProduto">
+    					action="#{mbProduto.filtroPersonalizado}" update="tableProduto">
     	</p:commandButton>
       </h:panelGrid>
         <p:dataTable id="tableProduto" value="#{mbProduto.resultado}"
@@ -94,8 +94,9 @@
 					</p:commandButton>
 					
 					<p:commandButton icon="ui-icon-arrowreturnthick-1-s" title="Alterar um produto"
-									 action="#{mbProduto.direcionarAlteracao}">
+									 action="#{mbInserirProduto.direcionarAlteracao}">
 						<f:setPropertyActionListener  value="#{produtos}" target="#{mbInserirProduto.produto}"/>
+						
 					</p:commandButton>
 					
 					<p:commandButton icon="ui-icon-circle-plus" title="Adicionar um produto" action="#{mbProduto.novo}"/>

@@ -20,6 +20,7 @@ public class RegraNegocioProduto {
 	public static void salvar(Produto produto) {
 		if (produto.getIdProduto() == null || produto.getIdProduto() == 0) {
 			ProdutoDao.salvar(produto);
+			
 		} else {
 			ProdutoDao.alterar(produto);
 		}
@@ -41,6 +42,9 @@ public class RegraNegocioProduto {
 
 	public static void setProduto(Produto produto) {
 		RegraNegocioProduto.produto = produto;
+	}
+	public static Produto recebeProduto() {
+		return produto;
 	}
 
 }

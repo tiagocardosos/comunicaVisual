@@ -1,14 +1,20 @@
 package br.com.drem.managebean.produtoMb;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
+import org.primefaces.event.SelectEvent;
 
 import br.com.drem.dao.ProdutoDao;
 import br.com.drem.entity.Produto;
@@ -22,7 +28,6 @@ import br.com.drem.util.JPAUtil;
  * @site: drem.com.br
  */
 @ManagedBean(name = "mbProduto")
-@RequestScoped
 public class MbProduto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Produto produto;
@@ -58,17 +63,13 @@ public class MbProduto implements Serializable {
 		RegraNegocioProduto.excluir(produto);
 		return "pgtbproduto";
 	}
-	public String salvar() {
-		RegraNegocioProduto.salvar(produto);
+/*	public String salvar() {
+		RegraNegocioProduto.salvar(produto, produto.getIdProduto());
 		return "pgtbproduto";
-	}
+	}*/
 
 	public String novo() {
 		RegraNegocioProduto.limpProduto();
-		return "pgproduto";
-	}
-
-	public String direcionarAlteracao() {
 		return "pgproduto";
 	}
 
@@ -83,13 +84,14 @@ public class MbProduto implements Serializable {
 		return resultado;
 	}
 
-	public List<Produto> filtroPersonalizado() {
+	public String filtroPersonalizado() throws IOException {
 		EntityManager em = JPAUtil.getEntityManager();
 		String consulta = "select p from Produto p where p.nomeProduto = :nome";
 		TypedQuery<Produto> query = em.createQuery(consulta, Produto.class);
 		query.setParameter("nome", produto.getNomeProduto());
 		this.resultado = query.getResultList();
+		//FacesContext.getCurrentInstance().getExternalContext().redirect("pgtbproduto.xhtml"); 
 		em.close();
-		return resultado;
-	}
+		return resultado + "?faces-redirect=true";
+	} 
 }
