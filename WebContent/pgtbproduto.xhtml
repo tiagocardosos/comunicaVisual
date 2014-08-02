@@ -21,12 +21,14 @@
         
       <h2><p:outputLabel value=" Filtro e ações para produtos"/></h2>
       <h:panelGrid columns="4">
+     
      <p:outputLabel value="Filtro:"/>
+     
      <p:inputText value="#{mbProduto.produto.nomeProduto}"
      			  size="50" maxlength="150" onkeyup="this.value = this.value.toUpperCase()"/>
       
     	<p:commandButton icon="ui-icon-search" title="Filtrar"
-    					action="#{mbProduto.filtroPersonalizado}" update="tableProduto">
+    					action="#{mbProduto.filtroPersonalizado}" update="tableProduto" >
     	</p:commandButton>
       </h:panelGrid>
         <p:dataTable id="tableProduto" value="#{mbProduto.resultado}"
@@ -40,7 +42,8 @@
                 {RowsPerPageDropdown}"
                 rowsPerPageTemplate="5,10,15"
                 style="width: 98%"
-                lazy="true">               
+                lazy="true">
+                              
 				<p:column>
 						<f:facet name="header">
 							<h:outputText value="Cod.:" />

@@ -92,6 +92,6 @@ public class MbProduto implements Serializable {
 		this.resultado = query.getResultList();
 		//FacesContext.getCurrentInstance().getExternalContext().redirect("pgtbproduto.xhtml"); 
 		em.close();
-		return resultado + "?faces-redirect=true";
+		return resultado + "pgtbproduto?faces-redirect=true";
 	} 
 }
