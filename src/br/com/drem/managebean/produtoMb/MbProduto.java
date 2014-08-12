@@ -2,19 +2,14 @@ package br.com.drem.managebean.produtoMb;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
-import org.primefaces.event.SelectEvent;
 
 import br.com.drem.dao.ProdutoDao;
 import br.com.drem.entity.Produto;
@@ -59,23 +54,29 @@ public class MbProduto implements Serializable {
 		this.produtoDao = produtoDao;
 	}
 
-	public String excluir() {
-		RegraNegocioProduto.excluir(produto);
-		return "pgtbproduto";
-	}
-/*	public String salvar() {
-		RegraNegocioProduto.salvar(produto, produto.getIdProduto());
-		return "pgtbproduto";
-	}*/
-
 	public String novo() {
 		RegraNegocioProduto.limpProduto();
 		return "pgproduto";
 	}
+	
+	public String salvar(){
+		RegraNegocioProduto.salvar(produto);
+		return"pgtbproduto" + "?faces-redirect=true";
+	}
+	
+	public String excluir(){
+		RegraNegocioProduto.excluir(produto);
+		return "pgtbproduto" + "?faces-redirect=true";
+	}
+	
+	public String direcionarAlteracao() {
+		return "pgproduto";
+	}
+
 
 	public List<Produto> getResultado() {
 		if(resultado == null){
-			resultado = new ArrayList<Produto>();
+			//resultado = new ArrayList<Produto>();
 			EntityManager em = JPAUtil.getEntityManager();
 			Query q = em.createQuery("select a from Produto a", Produto.class);
 			this.resultado = q.getResultList();
@@ -83,15 +84,15 @@ public class MbProduto implements Serializable {
 		}
 		return resultado;
 	}
-
-	public String filtroPersonalizado() throws IOException {
+	public List<Produto> filtroPersonalizado() throws IOException {
 		EntityManager em = JPAUtil.getEntityManager();
 		String consulta = "select p from Produto p where p.nomeProduto = :nome";
 		TypedQuery<Produto> query = em.createQuery(consulta, Produto.class);
 		query.setParameter("nome", produto.getNomeProduto());
 		this.resultado = query.getResultList();
-		//FacesContext.getCurrentInstance().getExternalContext().redirect("pgtbproduto.xhtml"); 
+		//FacesContext.getCurrentInstance().getExternalContext().redirect("pgtbproduto.xhtml");
+		// + "pgtbproduto?faces-redirect=true"
 		em.close();
-		return resultado + "pgtbproduto?faces-redirect=true";
+		return resultado;
 	} 
 }
