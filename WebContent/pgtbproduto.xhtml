@@ -15,7 +15,7 @@
 	<h:outputStylesheet library="css" name="estilo.css"/>
 </h:head>
 <h:body>
-<h:form id="formTbProduto">
+<h:form>
     	<ui:composition template="/templates/master.xhtml"> 
         <ui:define name="conteudo">
         
@@ -28,7 +28,7 @@
      			  size="50" maxlength="150" onkeyup="this.value = this.value.toUpperCase()"/>
       
     	<p:commandButton icon="ui-icon-search" title="Filtrar"
-    					action="#{mbProduto.filtroPersonalizado}" update="tableProduto" >
+    					action="#{mbProduto.filtroPersonalizado}" execute="tableProduto.show()" update="tableProduto">
     	</p:commandButton>
       </h:panelGrid>
         <p:dataTable id="tableProduto" value="#{mbProduto.resultado}"
